@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#121013">
 <title>Tanda &amp; Tone – Privacy policy</title>
 <meta name="description" content="Tanda & Tone collects nothing and sends nothing anywhere. What the app reads, what it stores on your Mac and how to delete it.">
 <meta property="og:title" content="Tanda & Tone: privacy policy">
@@ -359,8 +361,16 @@
     .listen .track { flex-basis: 100%; }
     td:first-child { width: 38%; }
   }
-  /* Tanda & Tone: the glow behind the dark parts is tango red; the controls stay amber, as in the app. */
-  :root { --glow: 200, 16, 46; }
+  /* Tanda & Tone: the night look of its marketing page (tango.html): warm black, ivory text, the app's amber, and
+     the red of the bandoneón's bellows as the glow. Dark in every colour scheme, as the app is. */
+  :root:root:root {
+    --bg: #121013; --surface: #1b181c; --text: #f1e9dc; --muted: #b0a596; --rule: rgba(240, 225, 200, .14);
+    --accent: #ffb45f; --accent-soft: #33271a;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .35);
+    --dark: #121013; --dark-text: #f1e9dc; --dark-muted: #b0a596; --glow: 200, 16, 46;
+  }
+  .kicker, .eyebrow, .card .tagline { color: #d9b26a; }
+  .top { border-bottom-color: rgba(240, 225, 200, .08); }
 </style>
 </head>
 <body>
