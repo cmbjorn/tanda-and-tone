@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tanda &amp; Tone – Privacy policy</title>
+<meta name="description" content="Tanda & Tone collects nothing and sends nothing anywhere. What the app reads, what it stores on your Mac and how to delete it.">
+<meta property="og:title" content="Tanda & Tone: privacy policy">
+<meta property="og:description" content="It collects nothing and sends nothing anywhere.">
+<meta property="og:image" content="https://cmbjorn.github.io/tanda-and-tone/images/icon-tango.png">
+<link rel="icon" type="image/png" href="images/icon-tango.png">
+<style>
+  :root {
+    --bg: #f6f2ea;
+    --surface: #fffdf8;
+    --text: #2a2622;
+    --muted: #6d655c;
+    --rule: #e2d9cb;
+    --accent: #b8620a;
+    --accent-soft: #f4e3cc;
+    --shadow: 0 1px 2px rgba(60, 40, 10, .08), 0 10px 30px rgba(60, 40, 10, .10);
+    --dark: #1b1c1e;
+    --dark-text: #f1ece3;
+    --dark-muted: #a79f92;
+    --amber: #ff9424;
+    --glow: 255, 148, 36;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17181a; --surface: #1f2123; --text: #e9e4da; --muted: #a09889; --rule: #34363a;
+      --accent: #ffa64d; --accent-soft: #3a2a17;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .4);
+      --dark: #111214;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17181a; --surface: #1f2123; --text: #e9e4da; --muted: #a09889; --rule: #34363a;
+    --accent: #ffa64d; --accent-soft: #3a2a17;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .4);
+    --dark: #111214;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  img { max-width: 100%; height: auto; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  .serif { font-family: ui-serif, "New York", Georgia, serif; }
+
+  /* Top bar */
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--dark) 88%, transparent);
+    backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+  }
+  .top .wrap { display: flex; align-items: center; gap: 18px; height: 54px; }
+  .brand { display: flex; align-items: center; gap: 9px; color: var(--dark-text); text-decoration: none; flex: none; }
+  .brand img { width: 28px; height: 28px; }
+  .brand span { font: italic 600 18px/1 ui-serif, "New York", Georgia, serif; }
+  .top nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a {
+    color: var(--dark-muted); text-decoration: none; font-size: 13.5px; white-space: nowrap;
+    padding: 6px 10px; border-radius: 7px;
+  }
+  .top nav a:hover { color: var(--dark-text); background: rgba(255, 255, 255, .07); }
+
+  /* Hero */
+  .hero {
+    color: var(--dark-text); text-align: center; overflow: hidden; padding-bottom: 88px;
+    background:
+      radial-gradient(1000px 520px at 50% 105%, rgba(var(--glow), .26), transparent 65%),
+      radial-gradient(700px 360px at 50% -10%, rgba(var(--glow), .10), transparent 70%),
+      var(--dark);
+  }
+  .hero .wrap { padding-top: 72px; }
+  .hero-icon { display: block; width: 128px; height: 128px; margin: 0 auto 14px; }
+  .eyebrow { color: #ffa64d; font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 16px; }
+  .hero h1 { font: italic 600 clamp(44px, 8vw, 84px)/1.02 ui-serif, "New York", Georgia, serif; margin: 0 auto 22px; max-width: 13em; }
+  .hero .lede { color: var(--dark-text); font-size: clamp(19px, 2.6vw, 24px); margin: 0 auto 18px; max-width: 30em; }
+  .hero .sub { color: var(--dark-muted); font-size: clamp(16px, 2vw, 18px); margin: 0 auto 30px; max-width: 36em; }
+  .hero.small { padding-bottom: 64px; }
+  .hero.small .wrap { padding-top: 56px; }
+  .hero.small h1 { font-size: clamp(34px, 5.4vw, 54px); max-width: 16em; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 11px;
+    font-weight: 600; font-size: 15.5px; text-decoration: none;
+  }
+  .btn.primary { background: var(--amber); color: #1a1206; box-shadow: 0 0 0 1px #ffb45f inset, 0 8px 24px rgba(255, 148, 36, .35); }
+  .btn.primary:hover { background: #ffa443; }
+  .btn.ghost { color: var(--dark-text); border: 1px solid rgba(255, 255, 255, .2); }
+  .btn.ghost:hover { background: rgba(255, 255, 255, .06); }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px; margin: 0 0 22px; padding: 7px 14px; border-radius: 999px;
+    background: rgba(255, 148, 36, .12); color: var(--amber); font-size: 14px; font-weight: 600;
+  }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--dark-muted); font-size: 14px; }
+  .facts li::before { content: "●"; color: #ffa64d; font-size: 9px; margin-right: 8px; vertical-align: 2px; }
+
+  /* Sections */
+  section { padding: 88px 0 0; }
+  .kicker { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 10px; }
+  h2 { font: 600 clamp(28px, 4.2vw, 42px)/1.12 ui-serif, "New York", Georgia, serif; margin: 0 0 14px; }
+  .intro { color: var(--muted); font-size: 18.5px; max-width: 38em; margin: 0 0 32px; }
+  .center { text-align: center; }
+  .center .intro { margin-left: auto; margin-right: auto; }
+  h3 { font-size: 20px; line-height: 1.3; margin: 0 0 8px; }
+  p { margin: 0 0 14px; }
+  .fine { color: var(--muted); font-size: 14.5px; max-width: 44em; }
+  .center .fine { margin-left: auto; margin-right: auto; }
+
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 24px 24px 10px; box-shadow: var(--shadow); }
+  .card p { color: var(--muted); font-size: 15.5px; }
+  .card .tagline { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 6px; }
+
+  /* At a glance: the whole app in six short answers */
+  .glance {
+    display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border-radius: 20px; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow);
+  }
+  .glance > div { padding: 22px 24px 8px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .glance > div:nth-child(3n) { border-right: 0; }
+  .glance > div:nth-last-child(-n+3) { border-bottom: 0; }
+  .glance dt { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin: 0 0 6px; }
+  .glance dd { margin: 0 0 14px; font-size: 16.5px; line-height: 1.5; }
+  .glance dd small { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  /* Checklists */
+  .checks { list-style: none; padding: 0; margin: 14px 0 0; }
+  .checks li { position: relative; padding: 0 0 12px 30px; color: var(--muted); font-size: 15.5px; }
+  .checks li strong { color: var(--text); }
+  .checks li::before {
+    content: ""; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%23e07a10' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;
+  }
+
+  /* A picture of the window */
+  figure.shot { margin: 36px 0 0; text-align: center; }
+  figure.shot img { display: block; margin: 0 auto; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .08); box-shadow: var(--shadow); }
+  figure.shot figcaption { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .band figure.shot { margin: 0 0 32px; }
+  .band figure.shot figcaption { color: var(--dark-muted); }
+
+  /* Inside a track (illustration) */
+  .inside { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 26px 28px 10px; box-shadow: var(--shadow); }
+  .inside-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; margin-bottom: 10px; }
+  .inside .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .inside h3 { margin: 0; font: 600 clamp(21px, 2.6vw, 26px)/1.2 ui-serif, "New York", Georgia, serif; }
+  .legend-lines { display: flex; gap: 18px; color: var(--muted); font-size: 13.5px; }
+  .legend-lines .ln { display: inline-block; width: 22px; height: 0; border-top: 3.5px solid; border-radius: 2px; margin-right: 8px; vertical-align: 4px; }
+  .legend-lines .ln.before { border-color: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .legend-lines .ln.after { border-color: var(--amber); }
+  .inside svg { width: 100%; height: auto; display: block; margin: 8px 0 6px; }
+  .inside .target { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 5 5; opacity: .8; }
+  .inside .zone { fill: var(--accent-soft); opacity: .55; }
+  .inside .curve { fill: none; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+  .inside .curve.before { stroke: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .inside .curve.after { stroke: var(--amber); }
+  .inside .tag { fill: var(--text); font: 700 13px -apple-system, sans-serif; }
+  .inside .tag .sub { fill: var(--accent); font-weight: 600; font-size: 12px; }
+  .inside .why { color: var(--muted); font-size: 15.5px; max-width: 46em; margin: 0 0 8px; }
+  .inside .axis { fill: var(--muted); font: 600 11px -apple-system, sans-serif; }
+  .inside-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 14px; }
+  .inside-points h4 { margin: 0 0 4px; font-size: 16px; }
+  .inside-points p { color: var(--muted); font-size: 15px; }
+  .inside .illus { color: var(--muted); font-size: 14px; margin: 0 0 16px; max-width: 60em; }
+  .inside-points.two { grid-template-columns: 1fr 1fr; }
+  .inside-points.four { grid-template-columns: repeat(4, 1fr); }
+  .tanda-rows svg { margin: 0 0 4px; }
+  .tanda-rows .bars { fill: none; stroke-width: 3; stroke-linecap: round; }
+  .tanda-rows .bars.before { stroke: color-mix(in srgb, var(--muted) 60%, transparent); }
+  .tanda-rows .bars.after { stroke: var(--amber); }
+  .rowlabel { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 14px 0 0; }
+  .rowlabel.after { color: var(--accent); }
+
+  /* Two columns of text */
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .feature .text p { color: var(--muted); font-size: 16.5px; }
+
+  /* Dark band */
+  .band {
+    margin-top: 88px; padding: 80px 0 88px; color: var(--dark-text);
+    background:
+      radial-gradient(800px 400px at 15% 0%, rgba(var(--glow), .14), transparent 70%),
+      radial-gradient(700px 400px at 90% 100%, rgba(79, 143, 255, .12), transparent 70%),
+      var(--dark);
+  }
+  .band section { padding: 0; }
+  .band h2 { color: var(--dark-text); }
+  .band .intro { color: var(--dark-muted); }
+  .band .kicker { color: #ffa64d; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tile { border-radius: 16px; padding: 20px 20px 6px; background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .08); }
+  .tile h3 { font-size: 17px; color: var(--dark-text); }
+  .tile p { color: var(--dark-muted); font-size: 14.5px; }
+  .tile .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: 1px; }
+
+  /* Roadmap */
+  .road { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .road .step { position: relative; padding-top: 30px; }
+  .road .step::before { content: ""; position: absolute; top: 8px; left: 0; right: -16px; height: 2px; background: var(--rule); }
+  .road .step:last-child::before { right: 0; background: linear-gradient(90deg, var(--rule), transparent); }
+  .road .step::after {
+    content: ""; position: absolute; top: 2px; left: 0; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .road .step.now::after { background: var(--accent); }
+  .road .when { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  .road ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .road li { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow); }
+  .road li b { display: block; font-size: 16px; margin-bottom: 2px; }
+  .road li span { color: var(--muted); font-size: 14.5px; line-height: 1.5; display: block; }
+  .road-note { color: var(--muted); font-size: 14.5px; margin: 18px 0 0; }
+
+  /* Price */
+  .price {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 20px; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow); margin-top: 28px;
+  }
+  .price > div { padding: 30px 28px 18px; border-right: 1px solid var(--rule); }
+  .price > div:last-child { border-right: 0; }
+  .price .big { color: var(--text); font: 600 32px/1.1 ui-serif, "New York", Georgia, serif; margin: 0 0 6px; }
+  .price p { color: var(--muted); font-size: 15.5px; }
+
+  /* Before and after: one clip at a time, switched in place */
+  .listen { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; box-shadow: var(--shadow);
+    padding: 26px 28px; margin: 28px 0 0; }
+  .listen h3 { margin: 0 0 4px; font-size: 20px; }
+  .listen .sub { margin: 0 0 18px; color: var(--muted); font-size: 15px; }
+  .listen .row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .listen .play { width: 54px; height: 54px; border-radius: 50%; border: 0; cursor: pointer; flex: none;
+    background: var(--amber); color: #1a1206; display: grid; place-items: center;
+    box-shadow: 0 0 0 1px #ffb45f inset, 0 6px 18px rgba(255, 148, 36, .35); }
+  .listen .play svg { width: 22px; height: 22px; }
+  .listen .switch { display: inline-flex; border-radius: 999px; padding: 3px; background: var(--bg); border: 1px solid var(--rule); }
+  .listen .switch button { border: 0; background: transparent; color: var(--text); font: 600 15px/1 inherit;
+    font-family: inherit; padding: 11px 20px; border-radius: 999px; cursor: pointer; }
+  .listen .switch button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+  .listen .track { flex: 1 1 200px; min-width: 160px; height: 6px; border-radius: 3px; background: var(--rule); overflow: hidden; cursor: pointer; }
+  .listen .track span { display: block; height: 100%; width: 0; background: var(--amber); }
+  .listen .time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 14px; min-width: 44px; text-align: right; }
+  .listen .fine { margin: 16px 0 0; color: var(--muted); font-size: 13px; max-width: none; }
+  .clip-soon { background: var(--surface); border: 1px dashed var(--rule); border-radius: 18px; padding: 22px 26px 8px; margin-top: 32px; }
+  .clip-soon h3 { font-size: 18px; }
+  .clip-soon p { color: var(--muted); font-size: 15.5px; }
+
+  /* Numbered steps */
+  .steps3 { counter-reset: s; margin-top: 36px; }
+  .steps3 .card { position: relative; padding-top: 30px; }
+  .steps3 .card::before {
+    counter-increment: s; content: counter(s); position: absolute; top: -16px; left: 22px;
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--amber); color: #1a1206; font-weight: 700; box-shadow: 0 6px 16px rgba(255, 148, 36, .35);
+  }
+
+  /* Questions */
+  .faq { max-width: 820px; }
+  details {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; margin: 0 0 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+  }
+  summary { cursor: pointer; list-style: none; padding: 16px 52px 16px 20px; font-weight: 600; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    font: 400 24px/1 -apple-system, sans-serif; color: var(--accent); transition: transform .2s;
+  }
+  details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+  details > div { padding: 0 20px 6px; color: var(--muted); }
+
+  /* Tables */
+  .table-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; overflow-x: auto; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; background: color-mix(in srgb, var(--rule) 35%, transparent); }
+  td:first-child { font-weight: 600; width: 30%; }
+  td { color: var(--muted); }
+  td:first-child { color: var(--text); }
+  .mark { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+  .note {
+    border-left: 4px solid var(--accent); background: var(--accent-soft);
+    padding: 14px 18px 2px; border-radius: 0 12px 12px 0; margin: 24px 0; max-width: 820px;
+  }
+
+  /* Plain text pages (privacy) */
+  .prose { max-width: 720px; margin: 0 auto; padding: 56px 16px 0; }
+  .prose h1 { font: 600 clamp(30px, 5vw, 44px)/1.1 ui-serif, "New York", Georgia, serif; margin: 0 0 6px; }
+  .prose .date { color: var(--muted); font-size: 14.5px; margin: 0 0 28px; }
+  .prose h2 { font: 600 21px/1.3 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; margin: 32px 0 8px; }
+  .prose .summary { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 20px 22px 8px; box-shadow: var(--shadow); margin: 0 0 8px; }
+  .prose code { font-size: 13.5px; overflow-wrap: anywhere; }
+  .prose li { margin-bottom: 6px; }
+
+  /* Closing */
+  .closing {
+    margin: 88px 0 0; border-radius: 24px; padding: 60px 32px; text-align: center; color: var(--dark-text);
+    background:
+      radial-gradient(700px 320px at 50% 120%, rgba(var(--glow), .3), transparent 70%),
+      var(--dark);
+  }
+  .closing h2 { color: var(--dark-text); }
+  .closing p { color: var(--dark-muted); max-width: 34em; margin: 0 auto 26px; font-size: 17.5px; }
+
+  footer.site { color: var(--muted); font-size: 13.5px; padding: 40px 0 56px; }
+  footer.site a { color: var(--muted); }
+  footer.site .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 8px; }
+
+  @media (max-width: 900px) {
+    .feature, .inside-points, .inside-points.two { grid-template-columns: 1fr; gap: 28px; }
+    .inside-points.four { grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+    .g2, .g3, .price { grid-template-columns: 1fr; }
+    .g4 { grid-template-columns: 1fr 1fr; }
+    .price > div { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .price > div:last-child { border-bottom: 0; }
+    .glance { grid-template-columns: 1fr 1fr; }
+    .glance > div:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .glance > div:nth-child(2n) { border-right: 0; }
+    .glance > div:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .glance > div:nth-last-child(-n+2) { border-bottom: 0; }
+    .tiles { grid-template-columns: 1fr 1fr; }
+    .inside { padding: 22px 18px 6px; }
+    .inside .tag { font-size: 22px; }
+    .inside .tag .sub { font-size: 20px; }
+    .inside .axis { font-size: 19px; }
+    .road { grid-template-columns: 1fr; gap: 26px; }
+    .road .step { padding: 0 0 0 30px; }
+    .road .step::before { top: 8px; bottom: -26px; left: 6px; right: auto; width: 2px; height: auto; }
+    .road .step:last-child::before { bottom: 0; background: linear-gradient(180deg, var(--rule), transparent); }
+    section { padding-top: 64px; }
+    .steps3 { gap: 30px; }
+  }
+  @media (max-width: 560px) {
+    .tiles, .g4 { grid-template-columns: 1fr; }
+    .inside-points.four { grid-template-columns: 1fr; }
+    .inside .tag { font-size: 28px; }
+    .inside .curve { stroke-width: 6; }
+    .inside .tag .sub { display: none; }
+    .glance { grid-template-columns: 1fr; }
+    .glance > div, .glance > div:nth-child(3n) { border-right: 0; }
+    .glance > div:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .glance > div:last-child { border-bottom: 0; }
+    .top nav a { padding: 6px 7px; }
+    .closing { padding: 44px 20px; }
+    .hero-icon { width: 104px; height: 104px; }
+    .listen { padding: 20px 16px; }
+    .listen .track { flex-basis: 100%; }
+    td:first-child { width: 38%; }
+  }
+  /* Tanda & Tone: the glow behind the dark parts is tango red; the controls stay amber, as in the app. */
+  :root { --glow: 200, 16, 46; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="images/icon-tango.png" alt=""><span>Tanda &amp; Tone</span></a>
+    <nav>
+      <a href="./">About</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<main class="prose">
+<h1>Privacy policy</h1>
+<p class="date">Tanda &amp; Tone · Last updated: 10 November 2026</p>
+
+<div class="summary">
+  <p><strong>In short</strong></p>
+  <ul><li>It collects nothing and sends nothing anywhere. No account, no analytics, no tracking.</li><li>It plays only the music files you choose, and never changes them.</li><li>It never records sound: only settings, your library's tags, numbers about each track and the set lists, on your Mac.</li><li>To remove everything, quit the app and delete its folder.</li></ul>
+</div>
+
+<p>Tanda &amp; Tone does not collect your data. It does not send anything anywhere: the app makes no network connections of its own and has no analytics, advertising or tracking. It has no account and no website form.</p>
+<h2>What the app can and cannot reach</h2>
+<p>It plays the music files you choose. It does not record sound from other apps, the system or a microphone, it does not talk to Spotify, Music or any other app, and it asks macOS for no permission to do so. It reads only the folders and files you give it through the open and save panels, and writes only where you say.</p>
+<h2>Purchases</h2>
+<p>The free trial and the unlock are bought through Apple's App Store, which handles the payment. The app only asks the App Store whether this Apple ID has them; we receive no personal or payment data.</p>
+<h2>What the app stores, and where</h2>
+<p>Everything is stored on your Mac, in the app's own folder, and never leaves it:</p>
+<ul><li>your settings (the output devices, the tone controls, the cortina folder and its settings, the pause between tracks, the columns and the lock);</li><li>the music folders you choose and, for each file in them, where it is, its tags (title, artist, orchestra, singer, rhythm, year and so on, with the corrections you make; your files themselves are never changed), its tempo and a few numbers about its loudness and tone, <code>library.json</code>;</li><li>for each track, a few numbers about its loudness and tone and your choices for it, so the app can level it better the next time, together with the track's title and artist;</li><li>your playlists, what is up next, and where you were when the app last closed, so it can offer to go on after a crash;</li><li>with the Restore Workshop: its list of recordings and, for each one it restored, a report of numbers;</li><li>the set log: for each evening, the tracks you played with the time, orchestra, singer, title, year and rhythm, as a text file and a playlist file in the <code>sets</code> folder, written as the evening goes;</li><li>logs for troubleshooting: numbers (loudness, performance) and the title and artist of the tracks played.</li></ul>
+<h2>What it does not store</h2>
+<p>It never records sound. The only audio it holds is a few seconds of the track being played, in memory, to process it, and it is gone when the app stops. The Restore Workshop writes restored copies of your own files, the ones you give it, into the folder you choose, and nowhere else. Its trained denoise model is part of the app and runs on your Mac (the Neural Engine); no sound is sent anywhere to be processed.</p>
+<h2>Deleting your data</h2>
+<p>Quit the app, then delete its folder. In the version from the App Store it is <code>~/Library/Containers/com.christianmelbybjoern.tango/Data/Library/Application Support/Tanda &amp; Tone/</code>. That removes the library, the track numbers, the set logs and the logs in one step. Setup → <em>Delete all notes</em> removes only the per-track numbers. Restored copies and exported set lists are ordinary files in the folders you chose: delete them in Finder. Removing the app does not touch your music.</p>
+<h2>TestFlight</h2>
+<p>If you test a beta through Apple's TestFlight, any feedback you send (a screenshot, a comment, a crash report) goes to us through TestFlight under Apple's terms and privacy policy; the app itself sends nothing. If you write to us by email, we use your address only to answer you.</p>
+<h2>Children</h2>
+<p>The app is not aimed at children and collects nothing from anyone.</p>
+<h2>Contact</h2>
+<p>Christian Melby Bjørn, christianmb@gmail.com</p>
+</main>
+
+<footer class="site">
+  <div class="wrap" style="max-width:720px">
+    <div class="links"><a href="./">Tanda &amp; Tone</a><a href="support.html">Support</a><a href="mailto:christianmb@gmail.com">Contact</a></div>
+    <p>© 2026 Christian Melby Bjørn.</p>
+  </div>
+</footer>
+</body>
+</html>

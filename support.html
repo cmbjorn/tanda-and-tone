@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tanda &amp; Tone – Support and guide</title>
+<meta name="description" content="How to use Tanda & Tone: setting up, tandas and cortinas, the evening, the sound controls, the Restore Workshop, common questions and purchases.">
+<meta property="og:title" content="Tanda & Tone: support and guide">
+<meta property="og:description" content="Setting up, tandas and cortinas, the sound and common questions.">
+<meta property="og:image" content="https://cmbjorn.github.io/tanda-and-tone/images/icon-tango.png">
+<link rel="icon" type="image/png" href="images/icon-tango.png">
+<style>
+  :root {
+    --bg: #f6f2ea;
+    --surface: #fffdf8;
+    --text: #2a2622;
+    --muted: #6d655c;
+    --rule: #e2d9cb;
+    --accent: #b8620a;
+    --accent-soft: #f4e3cc;
+    --shadow: 0 1px 2px rgba(60, 40, 10, .08), 0 10px 30px rgba(60, 40, 10, .10);
+    --dark: #1b1c1e;
+    --dark-text: #f1ece3;
+    --dark-muted: #a79f92;
+    --amber: #ff9424;
+    --glow: 255, 148, 36;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17181a; --surface: #1f2123; --text: #e9e4da; --muted: #a09889; --rule: #34363a;
+      --accent: #ffa64d; --accent-soft: #3a2a17;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .4);
+      --dark: #111214;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17181a; --surface: #1f2123; --text: #e9e4da; --muted: #a09889; --rule: #34363a;
+    --accent: #ffa64d; --accent-soft: #3a2a17;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .4);
+    --dark: #111214;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  img { max-width: 100%; height: auto; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  .serif { font-family: ui-serif, "New York", Georgia, serif; }
+
+  /* Top bar */
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--dark) 88%, transparent);
+    backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+  }
+  .top .wrap { display: flex; align-items: center; gap: 18px; height: 54px; }
+  .brand { display: flex; align-items: center; gap: 9px; color: var(--dark-text); text-decoration: none; flex: none; }
+  .brand img { width: 28px; height: 28px; }
+  .brand span { font: italic 600 18px/1 ui-serif, "New York", Georgia, serif; }
+  .top nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a {
+    color: var(--dark-muted); text-decoration: none; font-size: 13.5px; white-space: nowrap;
+    padding: 6px 10px; border-radius: 7px;
+  }
+  .top nav a:hover { color: var(--dark-text); background: rgba(255, 255, 255, .07); }
+
+  /* Hero */
+  .hero {
+    color: var(--dark-text); text-align: center; overflow: hidden; padding-bottom: 88px;
+    background:
+      radial-gradient(1000px 520px at 50% 105%, rgba(var(--glow), .26), transparent 65%),
+      radial-gradient(700px 360px at 50% -10%, rgba(var(--glow), .10), transparent 70%),
+      var(--dark);
+  }
+  .hero .wrap { padding-top: 72px; }
+  .hero-icon { display: block; width: 128px; height: 128px; margin: 0 auto 14px; }
+  .eyebrow { color: #ffa64d; font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 16px; }
+  .hero h1 { font: italic 600 clamp(44px, 8vw, 84px)/1.02 ui-serif, "New York", Georgia, serif; margin: 0 auto 22px; max-width: 13em; }
+  .hero .lede { color: var(--dark-text); font-size: clamp(19px, 2.6vw, 24px); margin: 0 auto 18px; max-width: 30em; }
+  .hero .sub { color: var(--dark-muted); font-size: clamp(16px, 2vw, 18px); margin: 0 auto 30px; max-width: 36em; }
+  .hero.small { padding-bottom: 64px; }
+  .hero.small .wrap { padding-top: 56px; }
+  .hero.small h1 { font-size: clamp(34px, 5.4vw, 54px); max-width: 16em; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 11px;
+    font-weight: 600; font-size: 15.5px; text-decoration: none;
+  }
+  .btn.primary { background: var(--amber); color: #1a1206; box-shadow: 0 0 0 1px #ffb45f inset, 0 8px 24px rgba(255, 148, 36, .35); }
+  .btn.primary:hover { background: #ffa443; }
+  .btn.ghost { color: var(--dark-text); border: 1px solid rgba(255, 255, 255, .2); }
+  .btn.ghost:hover { background: rgba(255, 255, 255, .06); }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px; margin: 0 0 22px; padding: 7px 14px; border-radius: 999px;
+    background: rgba(255, 148, 36, .12); color: var(--amber); font-size: 14px; font-weight: 600;
+  }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--dark-muted); font-size: 14px; }
+  .facts li::before { content: "●"; color: #ffa64d; font-size: 9px; margin-right: 8px; vertical-align: 2px; }
+
+  /* Sections */
+  section { padding: 88px 0 0; }
+  .kicker { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 10px; }
+  h2 { font: 600 clamp(28px, 4.2vw, 42px)/1.12 ui-serif, "New York", Georgia, serif; margin: 0 0 14px; }
+  .intro { color: var(--muted); font-size: 18.5px; max-width: 38em; margin: 0 0 32px; }
+  .center { text-align: center; }
+  .center .intro { margin-left: auto; margin-right: auto; }
+  h3 { font-size: 20px; line-height: 1.3; margin: 0 0 8px; }
+  p { margin: 0 0 14px; }
+  .fine { color: var(--muted); font-size: 14.5px; max-width: 44em; }
+  .center .fine { margin-left: auto; margin-right: auto; }
+
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 24px 24px 10px; box-shadow: var(--shadow); }
+  .card p { color: var(--muted); font-size: 15.5px; }
+  .card .tagline { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 6px; }
+
+  /* At a glance: the whole app in six short answers */
+  .glance {
+    display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border-radius: 20px; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow);
+  }
+  .glance > div { padding: 22px 24px 8px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .glance > div:nth-child(3n) { border-right: 0; }
+  .glance > div:nth-last-child(-n+3) { border-bottom: 0; }
+  .glance dt { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin: 0 0 6px; }
+  .glance dd { margin: 0 0 14px; font-size: 16.5px; line-height: 1.5; }
+  .glance dd small { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  /* Checklists */
+  .checks { list-style: none; padding: 0; margin: 14px 0 0; }
+  .checks li { position: relative; padding: 0 0 12px 30px; color: var(--muted); font-size: 15.5px; }
+  .checks li strong { color: var(--text); }
+  .checks li::before {
+    content: ""; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%23e07a10' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;
+  }
+
+  /* A picture of the window */
+  figure.shot { margin: 36px 0 0; text-align: center; }
+  figure.shot img { display: block; margin: 0 auto; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .08); box-shadow: var(--shadow); }
+  figure.shot figcaption { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .band figure.shot { margin: 0 0 32px; }
+  .band figure.shot figcaption { color: var(--dark-muted); }
+
+  /* Inside a track (illustration) */
+  .inside { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 26px 28px 10px; box-shadow: var(--shadow); }
+  .inside-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; margin-bottom: 10px; }
+  .inside .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .inside h3 { margin: 0; font: 600 clamp(21px, 2.6vw, 26px)/1.2 ui-serif, "New York", Georgia, serif; }
+  .legend-lines { display: flex; gap: 18px; color: var(--muted); font-size: 13.5px; }
+  .legend-lines .ln { display: inline-block; width: 22px; height: 0; border-top: 3.5px solid; border-radius: 2px; margin-right: 8px; vertical-align: 4px; }
+  .legend-lines .ln.before { border-color: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .legend-lines .ln.after { border-color: var(--amber); }
+  .inside svg { width: 100%; height: auto; display: block; margin: 8px 0 6px; }
+  .inside .target { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 5 5; opacity: .8; }
+  .inside .zone { fill: var(--accent-soft); opacity: .55; }
+  .inside .curve { fill: none; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+  .inside .curve.before { stroke: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .inside .curve.after { stroke: var(--amber); }
+  .inside .tag { fill: var(--text); font: 700 13px -apple-system, sans-serif; }
+  .inside .tag .sub { fill: var(--accent); font-weight: 600; font-size: 12px; }
+  .inside .why { color: var(--muted); font-size: 15.5px; max-width: 46em; margin: 0 0 8px; }
+  .inside .axis { fill: var(--muted); font: 600 11px -apple-system, sans-serif; }
+  .inside-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 14px; }
+  .inside-points h4 { margin: 0 0 4px; font-size: 16px; }
+  .inside-points p { color: var(--muted); font-size: 15px; }
+  .inside .illus { color: var(--muted); font-size: 14px; margin: 0 0 16px; max-width: 60em; }
+  .inside-points.two { grid-template-columns: 1fr 1fr; }
+  .inside-points.four { grid-template-columns: repeat(4, 1fr); }
+  .tanda-rows svg { margin: 0 0 4px; }
+  .tanda-rows .bars { fill: none; stroke-width: 3; stroke-linecap: round; }
+  .tanda-rows .bars.before { stroke: color-mix(in srgb, var(--muted) 60%, transparent); }
+  .tanda-rows .bars.after { stroke: var(--amber); }
+  .rowlabel { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 14px 0 0; }
+  .rowlabel.after { color: var(--accent); }
+
+  /* Two columns of text */
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .feature .text p { color: var(--muted); font-size: 16.5px; }
+
+  /* Dark band */
+  .band {
+    margin-top: 88px; padding: 80px 0 88px; color: var(--dark-text);
+    background:
+      radial-gradient(800px 400px at 15% 0%, rgba(var(--glow), .14), transparent 70%),
+      radial-gradient(700px 400px at 90% 100%, rgba(79, 143, 255, .12), transparent 70%),
+      var(--dark);
+  }
+  .band section { padding: 0; }
+  .band h2 { color: var(--dark-text); }
+  .band .intro { color: var(--dark-muted); }
+  .band .kicker { color: #ffa64d; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tile { border-radius: 16px; padding: 20px 20px 6px; background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .08); }
+  .tile h3 { font-size: 17px; color: var(--dark-text); }
+  .tile p { color: var(--dark-muted); font-size: 14.5px; }
+  .tile .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: 1px; }
+
+  /* Roadmap */
+  .road { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .road .step { position: relative; padding-top: 30px; }
+  .road .step::before { content: ""; position: absolute; top: 8px; left: 0; right: -16px; height: 2px; background: var(--rule); }
+  .road .step:last-child::before { right: 0; background: linear-gradient(90deg, var(--rule), transparent); }
+  .road .step::after {
+    content: ""; position: absolute; top: 2px; left: 0; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .road .step.now::after { background: var(--accent); }
+  .road .when { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  .road ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .road li { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow); }
+  .road li b { display: block; font-size: 16px; margin-bottom: 2px; }
+  .road li span { color: var(--muted); font-size: 14.5px; line-height: 1.5; display: block; }
+  .road-note { color: var(--muted); font-size: 14.5px; margin: 18px 0 0; }
+
+  /* Price */
+  .price {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 20px; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow); margin-top: 28px;
+  }
+  .price > div { padding: 30px 28px 18px; border-right: 1px solid var(--rule); }
+  .price > div:last-child { border-right: 0; }
+  .price .big { color: var(--text); font: 600 32px/1.1 ui-serif, "New York", Georgia, serif; margin: 0 0 6px; }
+  .price p { color: var(--muted); font-size: 15.5px; }
+
+  /* Before and after: one clip at a time, switched in place */
+  .listen { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; box-shadow: var(--shadow);
+    padding: 26px 28px; margin: 28px 0 0; }
+  .listen h3 { margin: 0 0 4px; font-size: 20px; }
+  .listen .sub { margin: 0 0 18px; color: var(--muted); font-size: 15px; }
+  .listen .row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .listen .play { width: 54px; height: 54px; border-radius: 50%; border: 0; cursor: pointer; flex: none;
+    background: var(--amber); color: #1a1206; display: grid; place-items: center;
+    box-shadow: 0 0 0 1px #ffb45f inset, 0 6px 18px rgba(255, 148, 36, .35); }
+  .listen .play svg { width: 22px; height: 22px; }
+  .listen .switch { display: inline-flex; border-radius: 999px; padding: 3px; background: var(--bg); border: 1px solid var(--rule); }
+  .listen .switch button { border: 0; background: transparent; color: var(--text); font: 600 15px/1 inherit;
+    font-family: inherit; padding: 11px 20px; border-radius: 999px; cursor: pointer; }
+  .listen .switch button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+  .listen .track { flex: 1 1 200px; min-width: 160px; height: 6px; border-radius: 3px; background: var(--rule); overflow: hidden; cursor: pointer; }
+  .listen .track span { display: block; height: 100%; width: 0; background: var(--amber); }
+  .listen .time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 14px; min-width: 44px; text-align: right; }
+  .listen .fine { margin: 16px 0 0; color: var(--muted); font-size: 13px; max-width: none; }
+  .clip-soon { background: var(--surface); border: 1px dashed var(--rule); border-radius: 18px; padding: 22px 26px 8px; margin-top: 32px; }
+  .clip-soon h3 { font-size: 18px; }
+  .clip-soon p { color: var(--muted); font-size: 15.5px; }
+
+  /* Numbered steps */
+  .steps3 { counter-reset: s; margin-top: 36px; }
+  .steps3 .card { position: relative; padding-top: 30px; }
+  .steps3 .card::before {
+    counter-increment: s; content: counter(s); position: absolute; top: -16px; left: 22px;
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--amber); color: #1a1206; font-weight: 700; box-shadow: 0 6px 16px rgba(255, 148, 36, .35);
+  }
+
+  /* Questions */
+  .faq { max-width: 820px; }
+  details {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; margin: 0 0 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+  }
+  summary { cursor: pointer; list-style: none; padding: 16px 52px 16px 20px; font-weight: 600; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    font: 400 24px/1 -apple-system, sans-serif; color: var(--accent); transition: transform .2s;
+  }
+  details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+  details > div { padding: 0 20px 6px; color: var(--muted); }
+
+  /* Tables */
+  .table-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; overflow-x: auto; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; background: color-mix(in srgb, var(--rule) 35%, transparent); }
+  td:first-child { font-weight: 600; width: 30%; }
+  td { color: var(--muted); }
+  td:first-child { color: var(--text); }
+  .mark { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+  .note {
+    border-left: 4px solid var(--accent); background: var(--accent-soft);
+    padding: 14px 18px 2px; border-radius: 0 12px 12px 0; margin: 24px 0; max-width: 820px;
+  }
+
+  /* Plain text pages (privacy) */
+  .prose { max-width: 720px; margin: 0 auto; padding: 56px 16px 0; }
+  .prose h1 { font: 600 clamp(30px, 5vw, 44px)/1.1 ui-serif, "New York", Georgia, serif; margin: 0 0 6px; }
+  .prose .date { color: var(--muted); font-size: 14.5px; margin: 0 0 28px; }
+  .prose h2 { font: 600 21px/1.3 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; margin: 32px 0 8px; }
+  .prose .summary { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 20px 22px 8px; box-shadow: var(--shadow); margin: 0 0 8px; }
+  .prose code { font-size: 13.5px; overflow-wrap: anywhere; }
+  .prose li { margin-bottom: 6px; }
+
+  /* Closing */
+  .closing {
+    margin: 88px 0 0; border-radius: 24px; padding: 60px 32px; text-align: center; color: var(--dark-text);
+    background:
+      radial-gradient(700px 320px at 50% 120%, rgba(var(--glow), .3), transparent 70%),
+      var(--dark);
+  }
+  .closing h2 { color: var(--dark-text); }
+  .closing p { color: var(--dark-muted); max-width: 34em; margin: 0 auto 26px; font-size: 17.5px; }
+
+  footer.site { color: var(--muted); font-size: 13.5px; padding: 40px 0 56px; }
+  footer.site a { color: var(--muted); }
+  footer.site .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 8px; }
+
+  @media (max-width: 900px) {
+    .feature, .inside-points, .inside-points.two { grid-template-columns: 1fr; gap: 28px; }
+    .inside-points.four { grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+    .g2, .g3, .price { grid-template-columns: 1fr; }
+    .g4 { grid-template-columns: 1fr 1fr; }
+    .price > div { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .price > div:last-child { border-bottom: 0; }
+    .glance { grid-template-columns: 1fr 1fr; }
+    .glance > div:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .glance > div:nth-child(2n) { border-right: 0; }
+    .glance > div:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .glance > div:nth-last-child(-n+2) { border-bottom: 0; }
+    .tiles { grid-template-columns: 1fr 1fr; }
+    .inside { padding: 22px 18px 6px; }
+    .inside .tag { font-size: 22px; }
+    .inside .tag .sub { font-size: 20px; }
+    .inside .axis { font-size: 19px; }
+    .road { grid-template-columns: 1fr; gap: 26px; }
+    .road .step { padding: 0 0 0 30px; }
+    .road .step::before { top: 8px; bottom: -26px; left: 6px; right: auto; width: 2px; height: auto; }
+    .road .step:last-child::before { bottom: 0; background: linear-gradient(180deg, var(--rule), transparent); }
+    section { padding-top: 64px; }
+    .steps3 { gap: 30px; }
+  }
+  @media (max-width: 560px) {
+    .tiles, .g4 { grid-template-columns: 1fr; }
+    .inside-points.four { grid-template-columns: 1fr; }
+    .inside .tag { font-size: 28px; }
+    .inside .curve { stroke-width: 6; }
+    .inside .tag .sub { display: none; }
+    .glance { grid-template-columns: 1fr; }
+    .glance > div, .glance > div:nth-child(3n) { border-right: 0; }
+    .glance > div:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .glance > div:last-child { border-bottom: 0; }
+    .top nav a { padding: 6px 7px; }
+    .closing { padding: 44px 20px; }
+    .hero-icon { width: 104px; height: 104px; }
+    .listen { padding: 20px 16px; }
+    .listen .track { flex-basis: 100%; }
+    td:first-child { width: 38%; }
+  }
+  /* Tanda & Tone: the glow behind the dark parts is tango red; the controls stay amber, as in the app. */
+  :root { --glow: 200, 16, 46; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><img src="images/icon-tango.png" alt=""><span>Tanda &amp; Tone</span></a>
+    <nav>
+      <a href="#start">Getting started</a>
+      <a href="#tandas">Tandas and cortinas</a>
+      <a href="#evening">During the evening</a>
+      <a href="#sound">The sound</a>
+      <a href="#workshop">Workshop</a>
+      <a href="#questions">Questions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero small">
+  <div class="wrap">
+    <p class="eyebrow">Support and guide</p>
+    <h1>Every tanda at the right level</h1>
+    <p class="sub">Tanda &amp; Tone plays your own music files for a milonga and looks after the sound, so you can play
+      the music and leave the mixer alone. This page shows how to set up, how tandas and cortinas work, and what each
+      control does.</p>
+    <div class="buttons">
+      <a class="btn primary" href="mailto:christianmb@gmail.com?subject=Tanda%20%26%20Tone">Email support</a>
+      <a class="btn ghost" href="#start">Getting started</a>
+      <a class="btn ghost" href="#questions">Questions</a>
+    </div>
+    <ul class="facts">
+      <li>Mac with Apple silicon</li>
+      <li>macOS 14.2 or later</li>
+      <li>No subscription</li>
+      <li>Nothing recorded</li>
+    </ul>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- Getting started -->
+<section id="start">
+  <p class="kicker">Getting started</p>
+  <h2>Set up once, at home</h2>
+  <p class="intro">Tanda &amp; Tone plays its own files only. It does not take the sound of any other app, so macOS asks
+    for no permission when you open it.</p>
+  <div class="grid g3 steps3">
+    <div class="card"><h3>Connect the PA</h3><p>A cable from the Mac's headphone jack to a line input on the mixer, not
+      a microphone input.</p></div>
+    <div class="card"><h3>Add your music</h3><p>Press <strong>Add Music Folder…</strong> under the library and choose
+      the folder with your tangos, valses and milongas. The files stay where they are and are never changed.</p></div>
+    <div class="card"><h3>Choose your cortinas</h3><p>Press <strong>Choose Cortina Folder…</strong> and choose the
+      folder with your cortinas.</p></div>
+    <div class="card"><h3>Connect your headphones</h3><p>A USB headphone adapter or Bluetooth headphones, for
+      pre-listen. The Mac's own jack goes to the room.</p></div>
+    <div class="card"><h3>Set the mixer gain once</h3><p>By ear. Every track comes out at the same loudness, so that
+      one setting holds for the evening.</p></div>
+    <div class="card"><h3>Press Play</h3><p>Put a tanda in Up Next and press Play. The room starts, and the sound is
+      looked after from the first note.</p></div>
+  </div>
+  <div class="note" style="margin-top:32px">
+    <p><strong>Let it listen first.</strong> After you add a folder, Tanda &amp; Tone listens through every track in the
+      background, so each track's level is known before you play it. Let it finish at home, overnight if the library is
+      large. The bottom of the sidebar shows how far it has come.</p>
+  </div>
+</section>
+
+<!-- Tandas and cortinas -->
+<section id="tandas">
+  <p class="kicker">Tandas and cortinas</p>
+  <h2>Building the evening in Up Next</h2>
+  <p class="intro">Up Next is the right-hand column: what the room plays next, in order. Tandas show as groups, with
+    their orchestra, years and count, and the time each one ends.</p>
+  <div class="grid g2">
+    <div class="card"><h3>Adding a tanda</h3><p>Select the tracks in the library, right-click and choose <strong>Add as
+      Tanda</strong> (⇧Return). They go to the end of Up Next as one tanda, and a cortina follows it. Drag rows to
+      change the order.</p></div>
+    <div class="card"><h3>A set from a template</h3><p>The + beside UP NEXT has <strong>New set: T T V T T M</strong>.
+      It lays out empty slots with a cortina after each. Drag the tracks of a tanda onto a slot and it fills. The room
+      stops at a slot that is still empty, so fill them before the evening.</p></div>
+    <div class="card"><h3>Cortinas</h3><p>When the room reaches a cortina row it plays the next cortina from your
+      folder, for a set length, and fades it out. <strong>Cortina Settings…</strong> in the + menu sets the order (in
+      order or at random), how long each plays (30 s to start with), the fade and the level (a little below the
+      music).</p></div>
+    <div class="card"><h3>Pause between tracks</h3><p>Under Up Next: the silence between two tracks, 2 s to start
+      with. It is counted from the last music of one track to the first music of the next, so the silence in the files
+      does not change it.</p></div>
+    <div class="card"><h3>Hints on a tanda</h3><p>A small <strong>!</strong> beside a tanda means something stands
+      out: more than one orchestra, different singers, many years apart, an unusual number of tracks, mixed rhythms or
+      a big change of tempo. Point at it to read which. It is a hint, never a block.</p></div>
+    <div class="card"><h3>Ending after a tanda</h3><p><strong>End after this tanda</strong> lets the tanda play to its
+      last track, then the room goes quiet before the cortina, for an announcement or a break. <strong>End after this
+      track</strong> does the same after the track in the room.</p></div>
+  </div>
+</section>
+
+<!-- During the evening -->
+<section id="evening">
+  <p class="kicker">During the evening</p>
+  <h2>Amber is the room, blue is only your headphones</h2>
+  <figure class="shot" style="margin:26px 0 32px">
+    <img src="images/player-tango.jpg" width="1100" height="626" alt="The Tanda & Tone window: the track in the room along the top, the library in the middle, Up Next in tandas on the right, the sound controls along the right edge and pre-listen along the bottom">
+    <figcaption>The room along the top, the library in the middle, Up Next and the sound on the right, pre-listen along
+      the bottom.</figcaption>
+  </figure>
+  <div class="grid g3">
+    <div class="card"><h3>The room</h3><p>The bar along the top shows the track in the room, the time left in large
+      digits, which tanda you are in and when it ends, and the next tanda. <strong>Play</strong> starts the room,
+      <strong>Fade out</strong> (F) ends a track or a cortina softly, and <strong>Next now</strong> (N) cuts to the
+      next track.</p></div>
+    <div class="card"><h3>Your headphones</h3><p>Double-click a track in the library, or select it and press Space, to
+      hear it in your headphones. Nothing blue ever reaches the room. You hear each track at about the level the room
+      will give it.</p></div>
+    <div class="card"><h3>The lock</h3><p>The padlock beside Stop (⌘L) guards against a slip of the hand. Locked, Stop
+      and Next now need a short hold. Fade out, the headphones and the library stay one click.</p></div>
+  </div>
+
+  <h3 style="margin:44px 0 14px">A checklist for the evening</h3>
+  <ul class="checks" style="max-width:820px">
+    <li><strong>At home:</strong> let the background listening finish, and fill every slot of a template set.</li>
+    <li><strong>Before the doors open:</strong> the cable in the headphone jack, your headphones connected, the mixer
+      gain set by ear on one track.</li>
+    <li><strong>On the Mac:</strong> leave the app's Volume at 0 and use the mixer's fader. Turn on Focus, so no
+      notification sounds reach the PA.</li>
+    <li><strong>The lock on</strong> once the first tanda plays.</li>
+    <li><strong>A reserve</strong> on its own mixer channel, such as a phone with a playlist, as with any setup.</li>
+    <li><strong>Afterwards:</strong> the + beside UP NEXT has <em>Export Tonight…</em>, which saves the evening's set
+      as a text list and a playlist file.</li>
+  </ul>
+</section>
+
+<!-- The sound -->
+<section id="sound">
+  <p class="kicker">The sound</p>
+  <h2>The controls are for taste</h2>
+  <p class="intro">You do not set the sound for each track. Every track is brought to the same level, with the music's
+    own dynamics kept: a soft passage comes up a little, a build still builds and a pause is never filled. Harsh
+    transfers are softened, worn ones are cleaned up and the PA is protected. The controls on the sound card, along
+    the right edge, are there when you want something different.</p>
+  <div class="table-card">
+    <table>
+      <tr><th>Control</th><th>What it does</th></tr>
+      <tr><td>Leveling</td><td>How much the level is looked after, from Soft through 1–9 to Strict. Soft is the
+        lightest touch: it leaves the most of the music's own dynamics, and more of the difference between a loud and
+        a quiet recording. The middle, 5, is where it starts.</td></tr>
+      <tr><td>Room</td><td>The room the PA stands in, from Padded through Neutral to Boomy. Boomy brings the bass
+        down for a reverberant hall; Padded brings warmth and air back to a damped room.</td></tr>
+      <tr><td>Ambience</td><td>A small room added to a very dry recording. Off leaves the sound alone.</td></tr>
+      <tr><td>Bass · Mid · Treble</td><td>Up to 6 dB either way, for the touch of tone you want for this room or this
+        orchestra. All three are at 0 every time the app opens.</td></tr>
+      <tr><td>Restore</td><td>Off, Auto or On: cleanup of clicks, crackle and hiss while a track plays. Auto decides
+        for each track; most DJs leave it there.</td></tr>
+      <tr><td>Limiter only</td><td>For a track where the processing sounds wrong: this track then gets only the level
+        match and the limiter. Press it again to go back.</td></tr>
+      <tr><td>Vol-mem. this track</td><td>Sets this track a little higher or lower, and remembers it for the track's
+        next play.</td></tr>
+      <tr><td>Volume</td><td>The Mac's own output volume. With a mixer, leave it at 0 and use the mixer's fader.</td></tr>
+    </table>
+  </div>
+  <div class="grid g2" style="margin-top:28px">
+    <div class="card"><h3>The Sound column in the library</h3><p>For each track: how much the room will lift it or turn
+      it down, the recording's grade as coloured bars, and an amber <strong>R</strong> when Restore in Auto will clean
+      it. A dot means the track has not been listened to yet.</p></div>
+    <div class="card"><h3>Slower for class</h3><p>The amber − 100 % + at the top changes the tempo of the track in the
+      room, from 70 to 110 %, with the pitch kept. The blue one changes the track in your headphones, so you can choose
+      the tempo before the class hears it. Double-click the percent to go back to 100 %.</p></div>
+  </div>
+</section>
+
+<!-- Workshop -->
+<section id="workshop">
+  <p class="kicker">The Restore Workshop</p>
+  <h2>New copies of your worst transfers</h2>
+  <p class="intro">Restore cleans a worn record while it plays. The workshop goes further, ahead of the evening: it
+    restores whole recordings and writes each as a new file. Your originals never change, and the player plays the
+    restored copy in place of the original.</p>
+  <div class="grid g3 steps3">
+    <div class="card"><h3>Open the workshop</h3><p><strong>Restore Workshop…</strong> under the library (⇧⌘R), and
+      choose where the restored files should go.</p></div>
+    <div class="card"><h3>Add recordings</h3><p>Add files or folders, or right-click tracks in the library and choose
+      <strong>Restore a Copy…</strong>.</p></div>
+    <div class="card"><h3>Press Start</h3><p>While music plays in the room, the workshop waits, so the room always
+      comes first.</p></div>
+  </div>
+  <div class="table-card" style="margin-top:32px">
+    <table>
+      <tr><th>Mark</th><th>What it means</th></tr>
+      <tr><td><span class="mark" style="background:#34c759"></span>Restored</td><td>The copy is written and plays in
+        place of the original.</td></tr>
+      <tr><td><span class="mark" style="background:#ff9f0a"></span>Restored: listen before you play it</td><td>The copy
+        is written, but hear it before the evening. The row says what to listen for.</td></tr>
+      <tr><td><span class="mark" style="background:#ff453a"></span>Not restored</td><td>Even the gentlest treatment
+        would harm the music, so nothing is written.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- Questions -->
+<section id="questions">
+  <p class="kicker">Questions</p>
+  <h2>Common questions</h2>
+  <div class="faq" style="margin-top:26px">
+    <details>
+      <summary>The room went quiet, or the app closed</summary>
+      <div><p>Open Tanda &amp; Tone again. It offers <strong>Go On from There</strong>, with the same Up Next and the
+        track where it was. Tanda &amp; Tone is the player, so nothing else plays while it is closed: keep a reserve on
+        its own mixer channel.</p></div>
+    </details>
+    <details>
+      <summary>The room stopped by itself</summary>
+      <div><p>It reached an empty slot of a template set, or End after this tanda was on. Fill the slot or press Play
+        to go on.</p></div>
+    </details>
+    <details>
+      <summary>Pre-listen has no headphones to choose</summary>
+      <div><p>Pre-listen needs headphones on a device of their own: a USB headphone adapter or Bluetooth headphones.
+        The Mac's own jack goes to the room and is never used for pre-listen. They appear in the blue bar as soon as
+        they are connected.</p></div>
+    </details>
+    <details>
+      <summary>A track sounds wrong</summary>
+      <div><p>Press <strong>Limiter only</strong> for that track, and tell me which recording it was. If a track is
+        only a little too loud or too quiet, use Vol-mem. this track: it is remembered for the next play.</p></div>
+    </details>
+    <details>
+      <summary>Soft passages are lifted too much, or not enough</summary>
+      <div><p>Engineer (⇧⌘E) has <strong>Quiet lift</strong>: the most a long, soft passage is lifted. Set it to 0
+        to switch that lift off, or higher for a room where soft passages get lost, and press Apply. A pause is never
+        lifted, whatever it says.</p></div>
+    </details>
+    <details>
+      <summary>The orchestra, singer or rhythm of a track is missing or wrong</summary>
+      <div><p>Select the track (or several), right-click and choose Set Orchestra…, Set Singer…, Set Rhythm or Set
+        Year…. Your corrections are kept in the app and never written to the files.</p></div>
+    </details>
+    <details>
+      <summary>A notification sound reached the PA</summary>
+      <div><p>While it runs, Tanda &amp; Tone moves the Mac's alert sounds to the Mac's own speakers. Turn on Focus for
+        the evening as well, and leave the output in System Settings → Sound on Headphones.</p></div>
+    </details>
+    <details>
+      <summary>Can I play to an AirPlay speaker?</summary>
+      <div><p>At home, yes: Setup → Output → <em>Same as the system output</em>. It adds about two seconds of delay,
+        so use the cable at a milonga.</p></div>
+    </details>
+    <details>
+      <summary>Does Tanda &amp; Tone record or upload my music?</summary>
+      <div><p>No. It never records or stores sound, and it works offline. See the
+        <a href="privacy.html">privacy policy</a>.</p></div>
+    </details>
+  </div>
+
+  <h3 style="margin:44px 0 14px">Keyboard shortcuts</h3>
+  <div class="table-card" style="max-width:640px">
+    <table>
+      <tr><th>Keys</th><th>Action</th></tr>
+      <tr><td>F</td><td>Fade out the room's track, also during a cortina</td></tr>
+      <tr><td>N</td><td>Next now (not while locked)</td></tr>
+      <tr><td>⌘.</td><td>Stop the room (not while locked)</td></tr>
+      <tr><td>⌘L</td><td>Lock or unlock Stop and Next now</td></tr>
+      <tr><td>Return</td><td>Add the selected tracks to Up Next</td></tr>
+      <tr><td>⇧Return</td><td>Add the selected tracks as a tanda</td></tr>
+      <tr><td>Space</td><td>Pre-listen the selected track</td></tr>
+      <tr><td>[ / ]</td><td>Pre-listen the previous / next track</td></tr>
+      <tr><td>⌘↑ / ⌘↓</td><td>Volume up / down</td></tr>
+      <tr><td>⌘F</td><td>Search the library</td></tr>
+      <tr><td>⇧⌘R</td><td>Restore Workshop</td></tr>
+      <tr><td>⌘,</td><td>Setup</td></tr>
+      <tr><td>⌘?</td><td>The manual</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- Purchases -->
+<section id="purchases">
+  <p class="kicker">Purchases</p>
+  <h2>Try it free, buy it once</h2>
+  <div class="price">
+    <div><p class="big">14 days free</p><p>The first Play offers a free trial with everything working. It never ends in
+      the middle of an evening, and never turns into a purchase by itself.</p></div>
+    <div><p class="big">One purchase</p><p>After the trial, one purchase unlocks Tanda &amp; Tone for good: one per
+      Apple ID, for all your Macs. No subscription.</p></div>
+    <div><p class="big">A new Mac</p><p>Use Setup → Purchase → <em>Restore Purchases</em>. Payments and refunds are
+      handled by Apple's App Store.</p></div>
+  </div>
+</section>
+
+<div class="closing" id="contact">
+  <h2>Still stuck, or something sounds wrong?</h2>
+  <p>Write to Christian Melby Bjørn, who makes Tanda &amp; Tone. Say which track it was and what you heard.
+    Tools → Show Logs in Finder opens the folder to send along; it holds numbers and track names, never any sound.</p>
+  <div class="buttons">
+    <a class="btn primary" href="mailto:christianmb@gmail.com?subject=Tanda%20%26%20Tone">Email support</a>
+    <a class="btn ghost" href="./">About Tanda &amp; Tone</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links"><a href="./">Tanda &amp; Tone</a><a href="privacy.html">Privacy policy</a><a href="mailto:christianmb@gmail.com">Contact</a></div>
+    <p>© 2026 Christian Melby Bjørn.</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tanda &amp; Tone – Every tanda at the right level</title>
+<meta name="description" content="Tanda & Tone is a Mac player for tango DJs that looks after the sound: every tanda at the right level with the dynamics of the music kept, worn transfers cleaned up, cortinas at a set length, and your library left as it is.">
+<meta property="og:title" content="Tanda & Tone">
+<meta property="og:description" content="Keep your library. Keep the dynamics. Let go of the fader. A Mac player for tango DJs.">
+<meta property="og:image" content="https://cmbjorn.github.io/tanda-and-tone/images/icon-tango.png">
+<link rel="icon" type="image/png" href="images/icon-tango.png">
+<style>
+  :root {
+    --bg: #f6f2ea;
+    --surface: #fffdf8;
+    --text: #2a2622;
+    --muted: #6d655c;
+    --rule: #e2d9cb;
+    --accent: #b8620a;
+    --accent-soft: #f4e3cc;
+    --shadow: 0 1px 2px rgba(60, 40, 10, .08), 0 10px 30px rgba(60, 40, 10, .10);
+    --dark: #1b1c1e;
+    --dark-text: #f1ece3;
+    --dark-muted: #a79f92;
+    --amber: #ff9424;
+    --glow: 255, 148, 36;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17181a; --surface: #1f2123; --text: #e9e4da; --muted: #a09889; --rule: #34363a;
+      --accent: #ffa64d; --accent-soft: #3a2a17;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .4);
+      --dark: #111214;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17181a; --surface: #1f2123; --text: #e9e4da; --muted: #a09889; --rule: #34363a;
+    --accent: #ffa64d; --accent-soft: #3a2a17;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 30px rgba(0, 0, 0, .4);
+    --dark: #111214;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  img { max-width: 100%; height: auto; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  .serif { font-family: ui-serif, "New York", Georgia, serif; }
+
+  /* Top bar */
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--dark) 88%, transparent);
+    backdrop-filter: saturate(160%) blur(14px); -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, .06);
+  }
+  .top .wrap { display: flex; align-items: center; gap: 18px; height: 54px; }
+  .brand { display: flex; align-items: center; gap: 9px; color: var(--dark-text); text-decoration: none; flex: none; }
+  .brand img { width: 28px; height: 28px; }
+  .brand span { font: italic 600 18px/1 ui-serif, "New York", Georgia, serif; }
+  .top nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a {
+    color: var(--dark-muted); text-decoration: none; font-size: 13.5px; white-space: nowrap;
+    padding: 6px 10px; border-radius: 7px;
+  }
+  .top nav a:hover { color: var(--dark-text); background: rgba(255, 255, 255, .07); }
+
+  /* Hero */
+  .hero {
+    color: var(--dark-text); text-align: center; overflow: hidden; padding-bottom: 88px;
+    background:
+      radial-gradient(1000px 520px at 50% 105%, rgba(var(--glow), .26), transparent 65%),
+      radial-gradient(700px 360px at 50% -10%, rgba(var(--glow), .10), transparent 70%),
+      var(--dark);
+  }
+  .hero .wrap { padding-top: 72px; }
+  .hero-icon { display: block; width: 128px; height: 128px; margin: 0 auto 14px; }
+  .eyebrow { color: #ffa64d; font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 16px; }
+  .hero h1 { font: italic 600 clamp(44px, 8vw, 84px)/1.02 ui-serif, "New York", Georgia, serif; margin: 0 auto 22px; max-width: 13em; }
+  .hero .lede { color: var(--dark-text); font-size: clamp(19px, 2.6vw, 24px); margin: 0 auto 18px; max-width: 30em; }
+  .hero .sub { color: var(--dark-muted); font-size: clamp(16px, 2vw, 18px); margin: 0 auto 30px; max-width: 36em; }
+  .hero.small { padding-bottom: 64px; }
+  .hero.small .wrap { padding-top: 56px; }
+  .hero.small h1 { font-size: clamp(34px, 5.4vw, 54px); max-width: 16em; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; padding: 12px 20px; border-radius: 11px;
+    font-weight: 600; font-size: 15.5px; text-decoration: none;
+  }
+  .btn.primary { background: var(--amber); color: #1a1206; box-shadow: 0 0 0 1px #ffb45f inset, 0 8px 24px rgba(255, 148, 36, .35); }
+  .btn.primary:hover { background: #ffa443; }
+  .btn.ghost { color: var(--dark-text); border: 1px solid rgba(255, 255, 255, .2); }
+  .btn.ghost:hover { background: rgba(255, 255, 255, .06); }
+  .status {
+    display: inline-flex; align-items: center; gap: 8px; margin: 0 0 22px; padding: 7px 14px; border-radius: 999px;
+    background: rgba(255, 148, 36, .12); color: var(--amber); font-size: 14px; font-weight: 600;
+  }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--amber); }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--dark-muted); font-size: 14px; }
+  .facts li::before { content: "●"; color: #ffa64d; font-size: 9px; margin-right: 8px; vertical-align: 2px; }
+
+  /* Sections */
+  section { padding: 88px 0 0; }
+  .kicker { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 10px; }
+  h2 { font: 600 clamp(28px, 4.2vw, 42px)/1.12 ui-serif, "New York", Georgia, serif; margin: 0 0 14px; }
+  .intro { color: var(--muted); font-size: 18.5px; max-width: 38em; margin: 0 0 32px; }
+  .center { text-align: center; }
+  .center .intro { margin-left: auto; margin-right: auto; }
+  h3 { font-size: 20px; line-height: 1.3; margin: 0 0 8px; }
+  p { margin: 0 0 14px; }
+  .fine { color: var(--muted); font-size: 14.5px; max-width: 44em; }
+  .center .fine { margin-left: auto; margin-right: auto; }
+
+  .grid { display: grid; gap: 16px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 24px 24px 10px; box-shadow: var(--shadow); }
+  .card p { color: var(--muted); font-size: 15.5px; }
+  .card .tagline { color: var(--accent); font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 6px; }
+
+  /* At a glance: the whole app in six short answers */
+  .glance {
+    display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border-radius: 20px; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow);
+  }
+  .glance > div { padding: 22px 24px 8px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .glance > div:nth-child(3n) { border-right: 0; }
+  .glance > div:nth-last-child(-n+3) { border-bottom: 0; }
+  .glance dt { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; margin: 0 0 6px; }
+  .glance dd { margin: 0 0 14px; font-size: 16.5px; line-height: 1.5; }
+  .glance dd small { display: block; color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  /* Checklists */
+  .checks { list-style: none; padding: 0; margin: 14px 0 0; }
+  .checks li { position: relative; padding: 0 0 12px 30px; color: var(--muted); font-size: 15.5px; }
+  .checks li strong { color: var(--text); }
+  .checks li::before {
+    content: ""; position: absolute; left: 0; top: 4px; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%23e07a10' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat;
+  }
+
+  /* A picture of the window */
+  figure.shot { margin: 36px 0 0; text-align: center; }
+  figure.shot img { display: block; margin: 0 auto; border-radius: 14px; border: 1px solid rgba(255, 255, 255, .08); box-shadow: var(--shadow); }
+  figure.shot figcaption { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .band figure.shot { margin: 0 0 32px; }
+  .band figure.shot figcaption { color: var(--dark-muted); }
+
+  /* Inside a track (illustration) */
+  .inside { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; padding: 26px 28px 10px; box-shadow: var(--shadow); }
+  .inside-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; margin-bottom: 10px; }
+  .inside .label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .inside h3 { margin: 0; font: 600 clamp(21px, 2.6vw, 26px)/1.2 ui-serif, "New York", Georgia, serif; }
+  .legend-lines { display: flex; gap: 18px; color: var(--muted); font-size: 13.5px; }
+  .legend-lines .ln { display: inline-block; width: 22px; height: 0; border-top: 3.5px solid; border-radius: 2px; margin-right: 8px; vertical-align: 4px; }
+  .legend-lines .ln.before { border-color: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .legend-lines .ln.after { border-color: var(--amber); }
+  .inside svg { width: 100%; height: auto; display: block; margin: 8px 0 6px; }
+  .inside .target { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 5 5; opacity: .8; }
+  .inside .zone { fill: var(--accent-soft); opacity: .55; }
+  .inside .curve { fill: none; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
+  .inside .curve.before { stroke: color-mix(in srgb, var(--muted) 55%, transparent); }
+  .inside .curve.after { stroke: var(--amber); }
+  .inside .tag { fill: var(--text); font: 700 13px -apple-system, sans-serif; }
+  .inside .tag .sub { fill: var(--accent); font-weight: 600; font-size: 12px; }
+  .inside .why { color: var(--muted); font-size: 15.5px; max-width: 46em; margin: 0 0 8px; }
+  .inside .axis { fill: var(--muted); font: 600 11px -apple-system, sans-serif; }
+  .inside-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 14px; }
+  .inside-points h4 { margin: 0 0 4px; font-size: 16px; }
+  .inside-points p { color: var(--muted); font-size: 15px; }
+  .inside .illus { color: var(--muted); font-size: 14px; margin: 0 0 16px; max-width: 60em; }
+  .inside-points.two { grid-template-columns: 1fr 1fr; }
+  .inside-points.four { grid-template-columns: repeat(4, 1fr); }
+  .tanda-rows svg { margin: 0 0 4px; }
+  .tanda-rows .bars { fill: none; stroke-width: 3; stroke-linecap: round; }
+  .tanda-rows .bars.before { stroke: color-mix(in srgb, var(--muted) 60%, transparent); }
+  .tanda-rows .bars.after { stroke: var(--amber); }
+  .rowlabel { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 14px 0 0; }
+  .rowlabel.after { color: var(--accent); }
+
+  /* Two columns of text */
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .feature .text p { color: var(--muted); font-size: 16.5px; }
+
+  /* Dark band */
+  .band {
+    margin-top: 88px; padding: 80px 0 88px; color: var(--dark-text);
+    background:
+      radial-gradient(800px 400px at 15% 0%, rgba(var(--glow), .14), transparent 70%),
+      radial-gradient(700px 400px at 90% 100%, rgba(79, 143, 255, .12), transparent 70%),
+      var(--dark);
+  }
+  .band section { padding: 0; }
+  .band h2 { color: var(--dark-text); }
+  .band .intro { color: var(--dark-muted); }
+  .band .kicker { color: #ffa64d; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tile { border-radius: 16px; padding: 20px 20px 6px; background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .08); }
+  .tile h3 { font-size: 17px; color: var(--dark-text); }
+  .tile p { color: var(--dark-muted); font-size: 14.5px; }
+  .tile .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 8px; vertical-align: 1px; }
+
+  /* Roadmap */
+  .road { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .road .step { position: relative; padding-top: 30px; }
+  .road .step::before { content: ""; position: absolute; top: 8px; left: 0; right: -16px; height: 2px; background: var(--rule); }
+  .road .step:last-child::before { right: 0; background: linear-gradient(90deg, var(--rule), transparent); }
+  .road .step::after {
+    content: ""; position: absolute; top: 2px; left: 0; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--accent);
+  }
+  .road .step.now::after { background: var(--accent); }
+  .road .when { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+  .road ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .road li { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 14px 16px; box-shadow: var(--shadow); }
+  .road li b { display: block; font-size: 16px; margin-bottom: 2px; }
+  .road li span { color: var(--muted); font-size: 14.5px; line-height: 1.5; display: block; }
+  .road-note { color: var(--muted); font-size: 14.5px; margin: 18px 0 0; }
+
+  /* Price */
+  .price {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 20px; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow); margin-top: 28px;
+  }
+  .price > div { padding: 30px 28px 18px; border-right: 1px solid var(--rule); }
+  .price > div:last-child { border-right: 0; }
+  .price .big { color: var(--text); font: 600 32px/1.1 ui-serif, "New York", Georgia, serif; margin: 0 0 6px; }
+  .price p { color: var(--muted); font-size: 15.5px; }
+
+  /* Before and after: one clip at a time, switched in place */
+  .listen { background: var(--surface); border: 1px solid var(--rule); border-radius: 18px; box-shadow: var(--shadow);
+    padding: 26px 28px; margin: 28px 0 0; }
+  .listen h3 { margin: 0 0 4px; font-size: 20px; }
+  .listen .sub { margin: 0 0 18px; color: var(--muted); font-size: 15px; }
+  .listen .row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .listen .play { width: 54px; height: 54px; border-radius: 50%; border: 0; cursor: pointer; flex: none;
+    background: var(--amber); color: #1a1206; display: grid; place-items: center;
+    box-shadow: 0 0 0 1px #ffb45f inset, 0 6px 18px rgba(255, 148, 36, .35); }
+  .listen .play svg { width: 22px; height: 22px; }
+  .listen .switch { display: inline-flex; border-radius: 999px; padding: 3px; background: var(--bg); border: 1px solid var(--rule); }
+  .listen .switch button { border: 0; background: transparent; color: var(--text); font: 600 15px/1 inherit;
+    font-family: inherit; padding: 11px 20px; border-radius: 999px; cursor: pointer; }
+  .listen .switch button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+  .listen .track { flex: 1 1 200px; min-width: 160px; height: 6px; border-radius: 3px; background: var(--rule); overflow: hidden; cursor: pointer; }
+  .listen .track span { display: block; height: 100%; width: 0; background: var(--amber); }
+  .listen .time { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 14px; min-width: 44px; text-align: right; }
+  .listen .fine { margin: 16px 0 0; color: var(--muted); font-size: 13px; max-width: none; }
+  .clip-soon { background: var(--surface); border: 1px dashed var(--rule); border-radius: 18px; padding: 22px 26px 8px; margin-top: 32px; }
+  .clip-soon h3 { font-size: 18px; }
+  .clip-soon p { color: var(--muted); font-size: 15.5px; }
+
+  /* Numbered steps */
+  .steps3 { counter-reset: s; margin-top: 36px; }
+  .steps3 .card { position: relative; padding-top: 30px; }
+  .steps3 .card::before {
+    counter-increment: s; content: counter(s); position: absolute; top: -16px; left: 22px;
+    width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--amber); color: #1a1206; font-weight: 700; box-shadow: 0 6px 16px rgba(255, 148, 36, .35);
+  }
+
+  /* Questions */
+  .faq { max-width: 820px; }
+  details {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; margin: 0 0 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+  }
+  summary { cursor: pointer; list-style: none; padding: 16px 52px 16px 20px; font-weight: 600; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    font: 400 24px/1 -apple-system, sans-serif; color: var(--accent); transition: transform .2s;
+  }
+  details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+  details > div { padding: 0 20px 6px; color: var(--muted); }
+
+  /* Tables */
+  .table-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; overflow-x: auto; box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 600; background: color-mix(in srgb, var(--rule) 35%, transparent); }
+  td:first-child { font-weight: 600; width: 30%; }
+  td { color: var(--muted); }
+  td:first-child { color: var(--text); }
+  .mark { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 8px; vertical-align: -1px; }
+  .note {
+    border-left: 4px solid var(--accent); background: var(--accent-soft);
+    padding: 14px 18px 2px; border-radius: 0 12px 12px 0; margin: 24px 0; max-width: 820px;
+  }
+
+  /* Plain text pages (privacy) */
+  .prose { max-width: 720px; margin: 0 auto; padding: 56px 16px 0; }
+  .prose h1 { font: 600 clamp(30px, 5vw, 44px)/1.1 ui-serif, "New York", Georgia, serif; margin: 0 0 6px; }
+  .prose .date { color: var(--muted); font-size: 14.5px; margin: 0 0 28px; }
+  .prose h2 { font: 600 21px/1.3 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; margin: 32px 0 8px; }
+  .prose .summary { background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; padding: 20px 22px 8px; box-shadow: var(--shadow); margin: 0 0 8px; }
+  .prose code { font-size: 13.5px; overflow-wrap: anywhere; }
+  .prose li { margin-bottom: 6px; }
+
+  /* Closing */
+  .closing {
+    margin: 88px 0 0; border-radius: 24px; padding: 60px 32px; text-align: center; color: var(--dark-text);
+    background:
+      radial-gradient(700px 320px at 50% 120%, rgba(var(--glow), .3), transparent 70%),
+      var(--dark);
+  }
+  .closing h2 { color: var(--dark-text); }
+  .closing p { color: var(--dark-muted); max-width: 34em; margin: 0 auto 26px; font-size: 17.5px; }
+
+  footer.site { color: var(--muted); font-size: 13.5px; padding: 40px 0 56px; }
+  footer.site a { color: var(--muted); }
+  footer.site .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 8px; }
+
+  @media (max-width: 900px) {
+    .feature, .inside-points, .inside-points.two { grid-template-columns: 1fr; gap: 28px; }
+    .inside-points.four { grid-template-columns: 1fr 1fr; gap: 20px 24px; }
+    .g2, .g3, .price { grid-template-columns: 1fr; }
+    .g4 { grid-template-columns: 1fr 1fr; }
+    .price > div { border-right: 0; border-bottom: 1px solid var(--rule); }
+    .price > div:last-child { border-bottom: 0; }
+    .glance { grid-template-columns: 1fr 1fr; }
+    .glance > div:nth-child(3n) { border-right: 1px solid var(--rule); }
+    .glance > div:nth-child(2n) { border-right: 0; }
+    .glance > div:nth-last-child(-n+3) { border-bottom: 1px solid var(--rule); }
+    .glance > div:nth-last-child(-n+2) { border-bottom: 0; }
+    .tiles { grid-template-columns: 1fr 1fr; }
+    .inside { padding: 22px 18px 6px; }
+    .inside .tag { font-size: 22px; }
+    .inside .tag .sub { font-size: 20px; }
+    .inside .axis { font-size: 19px; }
+    .road { grid-template-columns: 1fr; gap: 26px; }
+    .road .step { padding: 0 0 0 30px; }
+    .road .step::before { top: 8px; bottom: -26px; left: 6px; right: auto; width: 2px; height: auto; }
+    .road .step:last-child::before { bottom: 0; background: linear-gradient(180deg, var(--rule), transparent); }
+    section { padding-top: 64px; }
+    .steps3 { gap: 30px; }
+  }
+  @media (max-width: 560px) {
+    .tiles, .g4 { grid-template-columns: 1fr; }
+    .inside-points.four { grid-template-columns: 1fr; }
+    .inside .tag { font-size: 28px; }
+    .inside .curve { stroke-width: 6; }
+    .inside .tag .sub { display: none; }
+    .glance { grid-template-columns: 1fr; }
+    .glance > div, .glance > div:nth-child(3n) { border-right: 0; }
+    .glance > div:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .glance > div:last-child { border-bottom: 0; }
+    .top nav a { padding: 6px 7px; }
+    .closing { padding: 44px 20px; }
+    .hero-icon { width: 104px; height: 104px; }
+    .listen { padding: 20px 16px; }
+    .listen .track { flex-basis: 100%; }
+    td:first-child { width: 38%; }
+  }
+  /* Tanda & Tone: the glow behind the dark parts is tango red; the controls stay amber, as in the app. */
+  :root { --glow: 200, 16, 46; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="images/icon-tango.png" alt=""><span>Tanda &amp; Tone</span></a>
+    <nav>
+      <a href="#glance">At a glance</a>
+      <a href="#sound">The sound</a>
+      <a href="#milonga">At a milonga</a>
+      <a href="#player">The player</a>
+      <a href="#library">Your library</a>
+      <a href="#questions">Questions</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <img class="hero-icon" src="images/icon-tango.png" width="128" height="128" alt="">
+    <p class="eyebrow">For tango DJs · Mac</p>
+    <h1>Tanda &amp; Tone</h1>
+    <p class="lede"><strong>Keep your library. Keep the dynamics. Let go of the fader.</strong></p>
+    <p class="sub">A Mac player for tango DJs that looks after the sound while you look after the floor. It matches
+      the level from one transfer to the next and rides it gently inside a track, like a careful hand on the fader.
+      The builds, the accents and the pauses stay as the orchestra played them.</p>
+    <p class="status">In development · a public beta is coming</p>
+    <div class="buttons">
+      <a class="btn primary" href="#glance">See it at a glance</a>
+      <a class="btn ghost" href="#roadmap">What's next</a>
+    </div>
+    <ul class="facts">
+      <li>Your own files</li>
+      <li>Works offline</li>
+      <li>Nothing recorded or uploaded</li>
+    </ul>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- At a glance -->
+<section id="glance">
+  <p class="kicker">At a glance</p>
+  <h2>The whole app in six answers</h2>
+  <dl class="glance" style="margin-top:26px">
+    <div><dt>What it is</dt><dd>A player for the milonga that also takes care of the sound. One window for the whole
+      evening.</dd></div>
+    <div><dt>What you do</dt><dd>Point it at your music folders, build your tandas, press Play. There is nothing to
+      set for each track.</dd></div>
+    <div><dt>What the room hears</dt><dd>Every tanda at the right level, with the music's own dynamics. Worn
+      transfers cleaned up, the same pause between tracks, cortinas at the length you set.</dd></div>
+    <div><dt>What it leaves alone</dt><dd>Your files and your tags, always. And the drama in the music: the builds,
+      the accents and the pauses.</dd></div>
+    <div><dt>What you need</dt><dd>A Mac with Apple silicon and macOS 14.2 or later, your music as files, and a cable
+      to the mixer. <small>It plays your own files, not streaming services.</small></dd></div>
+    <div><dt>What it costs</dt><dd>Free for 14 days, then one purchase. No subscription, no account.</dd></div>
+  </dl>
+</section>
+
+<!-- The sound -->
+<section id="sound">
+  <p class="kicker">The sound</p>
+  <h2>The level is looked after. The dynamics are the orchestra's.</h2>
+  <p class="intro">Tango lives on contrast: a whispered violin, a long build, a held pause before the last two chords.
+    Tanda &amp; Tone is made to keep all of it. What it takes away is the jump in level from one transfer to the next,
+    and your reach for the fader.</p>
+
+  <div class="inside">
+    <div class="inside-head">
+      <div>
+        <div class="label">Between the tracks</div>
+        <h3>Each track keeps its shape. Only its size changes.</h3>
+      </div>
+    </div>
+    <p class="illus">Four tracks of one tanda. An illustration of the idea, not a measurement.</p>
+    <div class="tanda-rows">
+      <p class="rowlabel">As the files are</p>
+      <svg viewBox="0 0 786 120" role="img" aria-label="Four tracks of a tanda as the files are: each at a different size"><path class="bars before" d="M20 53.5V66.5M25 55.0V65.0M30 54.1V65.9M35 55.3V64.7M40 53.5V66.5M45 51.0V69.0M50 49.5V70.5M55 51.6V68.4M60 48.4V71.6M65 51.0V69.0M70 49.5V70.5M75 48.2V71.8M80 43.7V76.3M85 47.3V72.7M90 45.1V74.9M95 48.2V71.8M100 43.7V76.3M105 47.3V72.7M110 45.1V74.9M115 55.8V64.2M120 54.2V65.8M125 55.5V64.5M130 54.7V65.3M135 55.8V64.2M140 45.5V74.5M145 48.7V71.3M150 46.7V73.3M155 49.5V70.5M160 45.5V74.5M165 48.7V71.3M170 46.7V73.3M180 43.7V76.3M185 47.3V72.7M212 29.3V90.7M217 36.1V83.9M222 32.0V88.0M227 37.7V82.3M232 29.3V90.7M237 36.1V83.9M242 32.0V88.0M247 37.7V82.3M252 29.3V90.7M257 33.2V86.8M262 28.5V91.5M267 35.0V85.0M272 25.5V94.5M277 33.2V86.8M282 28.5V91.5M292 29.3V90.7M297 36.1V83.9M302 32.0V88.0M307 37.7V82.3M312 29.3V90.7M317 36.1V83.9M322 32.0V88.0M327 37.7V82.3M332 25.5V94.5M337 33.2V86.8M342 28.5V91.5M347 35.0V85.0M352 25.5V94.5M357 33.2V86.8M362 28.5V91.5M367 35.0V85.0M372 25.5V94.5M377 33.2V86.8M404 54.2V65.8M409 55.5V64.5M414 54.7V65.3M419 55.8V64.2M424 54.2V65.8M429 55.5V64.5M434 54.7V65.3M439 55.3V64.7M444 52.8V67.2M449 53.8V66.2M454 51.9V68.1M459 52.9V67.1M464 49.0V71.0M469 50.5V69.5M474 47.6V72.4M479 49.1V70.9M484 43.2V76.8M489 45.5V74.5M494 41.1V78.9M499 43.3V76.7M504 36.9V83.1M509 42.1V77.9M514 39.0V81.0M519 43.3V76.7M524 36.9V83.1M529 42.1V77.9M534 39.0V81.0M549 42.1V77.9M554 39.0V81.0M559 43.3V76.7M569 42.1V77.9M596 31.0V89.0M601 37.5V82.5M606 33.5V86.5M611 39.0V81.0M616 31.0V89.0M621 37.5V82.5M626 18.0V102.0M631 26.7V93.3M636 14.0V106.0M641 24.3V95.7M646 18.0V102.0M651 26.7V93.3M656 14.0V106.0M661 24.3V95.7M666 41.3V78.7M671 45.1V74.9M676 39.5V80.5M681 44.1V75.9M686 41.3V78.7M691 45.1V74.9M696 23.5V96.5M701 31.6V88.4M706 26.7V93.3M711 33.5V86.5M716 23.5V96.5M721 31.6V88.4M726 18.0V102.0M731 26.7V93.3M736 14.0V106.0M741 24.3V95.7M746 18.0V102.0M751 26.7V93.3M761 24.3V95.7"/></svg>
+      <p class="rowlabel after">As the room hears them</p>
+      <svg viewBox="0 0 786 120" role="img" aria-label="The same four tracks as the room hears them: the same size, each with its own shape"><path class="bars after" d="M20 36.3V83.7M25 41.6V78.4M30 38.4V81.6M35 42.8V77.2M40 36.3V83.7M45 36.1V83.9M50 32.0V88.0M55 37.7V82.3M60 29.3V90.7M65 36.1V83.9M70 32.0V88.0M75 30.3V89.7M80 19.0V101.0M85 28.2V91.8M90 22.6V97.4M95 30.3V89.7M100 19.0V101.0M105 28.2V91.8M110 22.6V97.4M115 43.9V76.1M120 37.7V82.3M125 42.7V77.3M130 39.7V80.3M135 43.9V76.1M140 22.8V97.2M145 31.1V88.9M150 26.0V94.0M155 33.0V87.0M160 22.8V97.2M165 31.1V88.9M170 26.0V94.0M180 19.0V101.0M185 28.2V91.8M212 22.8V97.2M217 31.1V88.9M222 26.0V94.0M227 33.0V87.0M232 22.8V97.2M237 31.1V88.9M242 26.0V94.0M247 33.0V87.0M252 22.8V97.2M257 28.2V91.8M262 22.6V97.4M267 30.3V89.7M272 19.0V101.0M277 28.2V91.8M282 22.6V97.4M292 22.8V97.2M297 31.1V88.9M302 26.0V94.0M307 33.0V87.0M312 22.8V97.2M317 31.1V88.9M322 26.0V94.0M327 33.0V87.0M332 19.0V101.0M337 28.2V91.8M342 22.6V97.4M347 30.3V89.7M352 19.0V101.0M357 28.2V91.8M362 22.6V97.4M367 30.3V89.7M372 19.0V101.0M377 28.2V91.8M404 43.7V76.3M409 47.3V72.7M414 45.1V74.9M419 48.2V71.8M424 43.7V76.3M429 47.3V72.7M434 45.1V74.9M439 46.9V73.1M444 39.8V80.2M449 43.0V77.0M454 38.8V81.2M459 42.1V77.9M464 33.8V86.2M469 38.7V81.3M474 33.9V86.1M479 38.4V81.6M484 28.6V91.4M489 33.3V86.7M494 25.8V94.2M499 30.3V89.7M504 19.0V101.0M509 28.2V91.8M514 22.6V97.4M519 30.3V89.7M524 19.0V101.0M529 28.2V91.8M534 22.6V97.4M549 28.2V91.8M554 22.6V97.4M559 30.3V89.7M569 28.2V91.8M596 30.6V89.4M601 37.2V82.8M606 33.2V86.8M611 38.7V81.3M616 30.6V89.4M621 37.2V82.8M626 22.6V97.4M631 30.3V89.7M636 19.0V101.0M641 28.2V91.8M646 22.6V97.4M651 30.3V89.7M656 19.0V101.0M661 28.2V91.8M666 36.9V83.1M671 41.7V78.3M676 34.7V85.3M681 40.4V79.6M686 36.9V83.1M691 41.7V78.3M696 26.2V93.8M701 33.7V86.3M706 29.1V90.9M711 35.5V84.5M716 26.2V93.8M721 33.7V86.3M726 22.6V97.4M731 30.3V89.7M736 19.0V101.0M741 28.2V91.8M746 22.6V97.4M751 30.3V89.7M761 28.2V91.8"/></svg>
+    </div>
+    <div class="inside-points two">
+      <div><h4>This is where the work is</h4><p>A quiet transfer from the thirties, a louder reissue, a modern
+        orchestra: in one evening the files can differ by 10&nbsp;dB from one track to the next. That difference is not
+        music. It is how each transfer was made.</p></div>
+      <div><h4>The room hears one level</h4><p>Each track is set from the whole recording before it plays, so nothing
+        hunts for the level while the music runs. One setting on your mixer holds for the evening.</p></div>
+    </div>
+  </div>
+
+  <div class="inside" style="margin-top:16px">
+    <div class="inside-head">
+      <div>
+        <div class="label">Inside a track</div>
+        <h3>A light touch, so the whole piece carries over a full floor</h3>
+      </div>
+      <div class="legend-lines">
+        <span><i class="ln before"></i>As recorded</span>
+        <span><i class="ln after"></i>In the room</span>
+      </div>
+    </div>
+    <p class="why">A milonga is not a quiet room. With a full floor the softest passages sink under the talk and the
+      shoes, and the loudest are what make someone ask you to turn it down. A small, slow correction keeps the whole
+      piece inside what the room can carry.</p>
+    <p class="illus">An illustration of the idea, not a measurement of one recording.</p>
+    <svg viewBox="0 0 800 230" role="img" aria-label="The loudness of one track over time, as recorded and as the room hears it: the two lines have the same shape. The whispered opening comes up a little, the build still climbs, the pause stays silent and the last chord comes at the full weight of the tutti">
+      <rect class="zone" x="14" y="18" width="136" height="196" rx="8"/>
+      <rect class="zone" x="150" y="18" width="210" height="196" rx="8" style="opacity:.28"/>
+      <rect class="zone" x="672" y="18" width="44" height="196" rx="8"/>
+      <polyline class="curve before" points="0,206 14,172 150,172 360,46 470,51 486,130 560,130 576,46 668,46 676,206 712,206 720,46 752,51 772,206 800,206"/>
+      <polyline class="curve after" points="0,206 14,140 150,140 360,56 470,61 486,106 560,106 576,56 668,56 676,206 712,206 720,56 752,61 772,206 800,206"/>
+      <text class="tag" x="82" y="40" text-anchor="middle">Whisper<tspan class="sub" x="82" dy="1.6em">up a little</tspan></text>
+      <text class="tag" x="236" y="40" text-anchor="middle">Build<tspan class="sub" x="236" dy="1.6em">still builds</tspan></text>
+      <text class="tag" x="664" y="172" text-anchor="end">Pause<tspan class="sub" x="664" dy="1.6em">untouched</tspan></text>
+    </svg>
+    <div class="inside-points four">
+      <div><h4>A whisper stays a whisper</h4><p>It comes up by a few dB, enough to be heard over a full floor. You can
+        set that lift lower, or switch it off.</p></div>
+      <div><h4>A build still builds</h4><p>A long crescendo keeps its climb, and the tutti still arrives as an
+        event.</p></div>
+      <div><h4>A pause stays silent</h4><p>Nothing is filled in, and nothing swells while the orchestra holds its
+        breath.</p></div>
+      <div><h4>The last chord lands</h4><p>After the pause, the final chords come at the full weight of the
+        tutti.</p></div>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><strong>If you know your compressors.</strong> Tango DJs who write about sound tend to describe the same ideal:
+      level the library first, then a soft, slow compressor that takes a few dB off the loudest passages and is almost
+      unnoticeable, with the bass kept out of what it listens to. That is how Tanda &amp; Tone is built. Each track is
+      levelled before it plays, so little is left for the compressor to do; the double bass and the left hands do not
+      make the music pump; and the limiter at the end only catches the peaks that would hurt the PA. Leveling sets how
+      much of all this you want, from Soft to Strict.</p>
+  </div>
+</section>
+
+<!-- At a milonga -->
+<section id="milonga">
+  <p class="kicker">At a milonga</p>
+  <h2>What it does for you during the night</h2>
+  <p class="intro">Everything below happens while you play. None of it asks for your attention.</p>
+  <div class="grid g3">
+    <div class="card">
+      <p class="tagline">The sound</p>
+      <h3>One setting on the mixer, all night</h3>
+      <ul class="checks">
+        <li><strong>Every tanda at the right level.</strong> A 1938 transfer and a modern orchestra stand side by
+          side, and you do not touch the fader.</li>
+        <li><strong>The dynamics stay.</strong> Soft passages carry over a full floor and the tuttis stay
+          comfortable, with the shape of the music kept.</li>
+        <li><strong>Worn transfers cleaned up, gently.</strong> Clicks, crackle and hiss are taken down while you
+          play. Clean transfers are left alone, and Off is one click.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="tagline">The evening</p>
+      <h3>Tandas and cortinas, laid out</h3>
+      <ul class="checks">
+        <li><strong>Up Next in tandas.</strong> Tandas show as groups with a cortina between them and the time each
+          one ends. A small mark hints at a tanda that mixes orchestras or rhythms; it never stops you.</li>
+        <li><strong>Cortinas for a set length.</strong> A cortina plays for the time you choose, such as 30 seconds,
+          and fades out.</li>
+        <li><strong>The same pause between tracks.</strong> The gap is the length you set, whatever silence the files
+          carry at their ends.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="tagline">Peace of mind</p>
+      <h3>Nothing cut short by accident</h3>
+      <ul class="checks">
+        <li><strong>A lock against a wrong click.</strong> Locked, Stop and Next need a short hold.</li>
+        <li><strong>The PA is guarded.</strong> A limiter catches the peaks that would hurt the speakers, and
+          nothing else.</li>
+        <li><strong>It picks up where it was.</strong> If the app stops, open it again and go on from the same track
+          with the same Up Next.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- The player -->
+<div class="band" id="player">
+  <div class="wrap">
+    <section>
+      <p class="kicker">The player</p>
+      <h2>Made for running a milonga</h2>
+      <p class="intro">What is playing and how much is left, the next tanda and when the set ends, your library in the
+        middle. Nothing to learn that a tango DJ does not already do.</p>
+      <figure class="shot">
+        <img src="images/player-tango.jpg" width="1100" height="626" alt="The Tanda & Tone window: the track in the room along the top, the library in the middle, Up Next in tandas on the right, the sound controls along the right edge and pre-listen along the bottom">
+        <figcaption>Amber is the room, blue is only your headphones.</figcaption>
+      </figure>
+      <div class="tiles">
+        <div class="tile"><h3><span class="dot" style="background:#ff9424"></span>Now playing</h3><p>Orchestra, singer and
+          year under the title, time left in large digits, and which tanda you are in and when it ends.</p></div>
+        <div class="tile"><h3><span class="dot" style="background:#4f8fff"></span>Pre-listen</h3><p>Hear the next track in
+          your headphones while the room plays on, at about the level the room will give it.</p></div>
+        <div class="tile"><h3><span class="dot" style="background:#ff9424"></span>Tone</h3><p>Bass, Mid and Treble,
+          up to 6&nbsp;dB either way, for the touch you want in the room. Flat when you start.</p></div>
+        <div class="tile"><h3><span class="dot" style="background:#ff9424"></span>Fade out</h3><p>End a cortina or a
+          track early, softly, when the floor asks for it.</p></div>
+        <div class="tile"><h3><span class="dot" style="background:#ff9424"></span>Slower for class</h3><p>Any track
+          from 70 to 110&nbsp;% of its tempo with the pitch kept, to teach a figure at an easier speed.</p></div>
+        <div class="tile"><h3><span class="dot" style="background:#ff9424"></span>The set, afterwards</h3><p>Every track
+          you played, with its time, as a text list and a playlist file, ready to share after the night.</p></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- Your library -->
+<section id="library">
+  <p class="kicker">Your library</p>
+  <h2>Your library stays yours</h2>
+  <p class="intro">You do not import anything into a new format, and you do not retag. Tanda &amp; Tone reads the music
+    where it already is.</p>
+  <div class="grid g2">
+    <div class="card">
+      <p class="tagline">Finding the music</p>
+      <ul class="checks">
+        <li><strong>Tags read from your files,</strong> FLAC included.</li>
+        <li><strong>Orchestra, singer and rhythm</strong> (tango, vals, milonga) as columns, with search and filters,
+          so a tanda is a few clicks.</li>
+        <li><strong>Playlists in and out</strong> in the common playlist format, so your work is not locked in.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="tagline">Keeping it safe</p>
+      <ul class="checks">
+        <li><strong>Your files are never changed.</strong> Corrections you make stay in the app.</li>
+        <li><strong>Works offline,</strong> in a hall with no signal.</li>
+        <li><strong>Nothing is recorded or uploaded.</strong> No account, no analytics, no tracking.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Restore -->
+<section id="restore">
+  <p class="kicker">Restore</p>
+  <h2>Worn transfers, cleaned up</h2>
+  <p class="intro">Clicks, crackle and hiss taken down: live while you play, or as new copies of your worst
+    transfers.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Live, from the first note</h3>
+      <p>Each recording gets only as much cleaning as it needs, and clean ones are left alone. A worn track is never
+        let go halfway: on a dance floor, crackle coming back is worse than a little cleaning.</p>
+    </div>
+    <div class="card">
+      <h3>The Restore Workshop: new copies</h3>
+      <p>For the worst transfers, drop in files or a whole folder ahead of the evening. Each is saved as a new
+        lossless file, and the player plays the restored copy in place of the original. Your originals never change.</p>
+    </div>
+  </div>
+
+  <!-- A tango before/after clip goes here: a short, public-domain, worn Argentine 78 side, the same seconds before and after
+       the Restore Workshop, switched in place (the player markup and script are in restore.html, id="hear"; clips under audio/).
+       Do not reuse Panama (it is jazz). -->
+  <div class="clip-soon" id="hear">
+    <h3>Hear it</h3>
+    <p>A before and after on a worn tango 78 is coming here.</p>
+  </div>
+</section>
+
+<!-- Who it's for -->
+<section id="who">
+  <p class="kicker">Who it's for</p>
+  <h2>More time for the cabeceo, less for the fader</h2>
+  <div class="grid g3" style="margin-top:28px">
+    <div class="card">
+      <h3>Milonga DJs</h3>
+      <p>A 1940 transfer and a modern orchestra in the same evening, at one level, each with its own dynamics. You
+        build the evening; the sound keeps up.</p>
+    </div>
+    <div class="card">
+      <h3>Organisers who DJ their own milonga</h3>
+      <p>Run the night from one window: tandas, cortinas and the clock, with the sound taken care of and a lock against
+        a stray click.</p>
+    </div>
+    <div class="card">
+      <h3>Teachers and practicas</h3>
+      <p>Press play and teach. Every track comes up at the same comfortable level, and a track can be played a little
+        slower for class.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Questions -->
+<section id="questions">
+  <p class="kicker">Questions</p>
+  <h2>Good to know before you try it</h2>
+  <div class="faq" style="margin-top:26px">
+    <details>
+      <summary>Does it play Spotify or other streaming services?</summary>
+      <div><p>No. Tanda &amp; Tone plays your own music files: MP3, AAC and Apple Lossless, WAV, AIFF and FLAC.</p></div>
+    </details>
+    <details>
+      <summary>Do I have to import or retag my library?</summary>
+      <div><p>No. Point it at your music folders and it reads the files where they are. Where the tags are not
+        tango-shaped it takes what it can from the artist and the title, and you can correct a track in the app. Your
+        files are never changed.</p></div>
+    </details>
+    <details>
+      <summary>Will it flatten the dynamics?</summary>
+      <div><p>No. The big correction is between tracks, where the difference comes from the transfers and not from
+        the music. Inside a track the touch is light: a soft passage comes up by a few dB, a build keeps its climb, a
+        pause is never filled and the last chord lands at full weight. If you want less, turn Leveling towards
+        Soft.</p></div>
+    </details>
+    <details>
+      <summary>How is this different from normalising my files?</summary>
+      <div><p>Normalising gives each file one level, and that is the first thing Tanda &amp; Tone does too. It then
+        does what one number per file cannot: a gentle ride inside the track so soft passages carry in a full room,
+        cleanup of clicks and crackle, the same pause between tracks and a limiter for the PA. And nothing is written
+        to your files.</p></div>
+    </details>
+    <details>
+      <summary>Can I have less of it, or none?</summary>
+      <div><p>Yes. Leveling goes from Soft to Strict, and Soft is the lightest touch. Quiet lift, under Engineer, sets
+        how far a soft passage may come up, down to nothing. Restore can be switched off. Limiter only gives one track
+        just its level and the limiter. Bass, Mid and Treble are yours, and so is your mixer.</p></div>
+    </details>
+    <details>
+      <summary>What do I need for pre-listen?</summary>
+      <div><p>Headphones on a device of their own: a USB headphone adapter or Bluetooth headphones. The Mac's own
+        jack goes to the room.</p></div>
+    </details>
+    <details>
+      <summary>What if the Mac stops in the middle of a milonga?</summary>
+      <div><p>The room goes quiet, because Tanda &amp; Tone is the player. Open it again and it offers to go on from the
+        same track with the same Up Next. As with any setup, keep a reserve on its own mixer channel, such as a phone
+        with a playlist.</p></div>
+    </details>
+    <details>
+      <summary>What will it cost?</summary>
+      <div><p>The price is not set yet. It will be free for 14 days and then one purchase, with no subscription.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section id="roadmap">
+  <p class="kicker">What's next</p>
+  <h2>Built with the DJs who use it</h2>
+  <p class="intro">Where it stands, and what comes next, in the likely order. DJs' wishes can change it.</p>
+  <div class="road">
+    <div class="step now">
+      <p class="when">Now</p>
+      <ul>
+        <li><b>The sound check with tango DJs</b><span>Listening to real tandas on a PA with DJs, and setting the sound by what they hear.</span></li>
+      </ul>
+    </div>
+    <div class="step">
+      <p class="when">Next</p>
+      <ul>
+        <li><b>A public beta</b><span>Open to tango DJs who want to try it at a real milonga.</span></li>
+      </ul>
+    </div>
+    <div class="step">
+      <p class="when">Then</p>
+      <ul>
+        <li><b>The App Store</b><span>For the Mac, with a free 14-day trial first and one purchase, no subscription.</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="road-note">Updated November 2026. Missing something you need at a milonga?
+    <a href="mailto:christianmb@gmail.com?subject=Tanda%20%26%20Tone%3A%20a%20wish">Tell me</a>.</p>
+</section>
+
+<div class="closing" id="contact">
+  <h2>Want to hear it at your milonga?</h2>
+  <p>Tanda &amp; Tone is made by Christian Melby Bjørn, who also makes Swing &amp; Sweet for swing and blues DJs and
+    Shellac &amp; Vinyl for worn records. Write with questions, or to try the beta when it opens.</p>
+  <div class="buttons">
+    <a class="btn primary" href="mailto:christianmb@gmail.com?subject=Tanda%20%26%20Tone">Get in touch</a>
+    <a class="btn ghost" href="support.html">Support and guide</a>
+  </div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links"><a href="support.html">Support</a><a href="privacy.html">Privacy policy</a><a href="mailto:christianmb@gmail.com">Contact</a></div>
+    <p>© 2026 Christian Melby Bjørn.</p>
+  </div>
+</footer>
+</body>
+</html>
