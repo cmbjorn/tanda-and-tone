@@ -6,9 +6,9 @@
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#121013">
 <title>Tanda &amp; Tone – Hear the orchestra, not the transfer</title>
-<meta name="description" content="Tanda & Tone is a Mac player for tango DJs. It matches the level from one transfer to the next and leaves the dynamics to the orchestra, cleans up worn transfers, plays cortinas at a set length, and leaves your library as it is.">
+<meta name="description" content="Tanda & Tone is a Mac player for tango DJs: tandas and cortinas, pre-listen, a screen for the dancers, your library read where it is, and every track at the right level with the dynamics left to the orchestra.">
 <meta property="og:title" content="Tanda & Tone: hear the orchestra, not the transfer">
-<meta property="og:description" content="A Mac player for tango DJs: every transfer at the right level, the dynamics left to the orchestra, and the sound still yours to set.">
+<meta property="og:description" content="A Mac player for tango DJs: tandas, cortinas and your library as you keep it, with every transfer at the right level.">
 <meta property="og:image" content="https://cmbjorn.github.io/tanda-and-tone/images/og-tango.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="images/icon-tango.png">
@@ -96,13 +96,6 @@
   .shot img { position: relative; z-index: 1; display: block; width: 100%; border-radius: 14px; box-shadow: 0 30px 80px rgba(0, 0, 0, .55), 0 0 0 1px rgba(255, 255, 255, .09); }
   .shot figcaption { position: relative; z-index: 1; color: var(--muted); font-size: 14px; margin: 18px auto 0; max-width: 46em; }
 
-  /* Three lines under the picture */
-  .promises { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-  .promises > div { padding: 30px 36px 12px; border-left: 1px solid var(--line); }
-  .promises > div:first-child { padding-left: 0; border-left: 0; }
-  .promises > div:last-child { padding-right: 0; }
-  .promises h2 { font: italic 600 clamp(25px, 2.6vw, 30px)/1.15 var(--serif); letter-spacing: 0; color: var(--amber-soft); margin: 0 0 10px; max-width: none; }
-  .promises p { color: var(--muted); font-size: 16.5px; }
 
   /* A tanda and its cortina, between the parts of the page */
   .tanda-rule { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 80px 0 64px; }
@@ -122,59 +115,23 @@
   /* The sound: four panels */
   .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px 34px 20px; margin: 0 0 18px; }
   .panel .label { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin: 0 0 8px; }
-  .panel-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 28px; margin-bottom: 8px; }
-  .panel-head h3 { margin: 0; }
   .panel .why { color: var(--muted); max-width: 44em; margin: 10px 0 6px; }
   .panel .illus { color: var(--faint); font-size: 14px; margin: 0 0 6px; }
   .panel svg { width: 100%; height: auto; display: block; }
-  .legend { display: flex; gap: 20px; color: var(--muted); font-size: 13.5px; }
-  .legend i { display: inline-block; width: 22px; height: 0; border-top: 3.5px solid; border-radius: 2px; margin-right: 8px; vertical-align: 4px; }
-  .legend .before { border-color: var(--before); }
-  .legend .after { border-color: var(--amber); }
   .rowlabel { font-size: 11.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 20px 0 2px; }
   .rowlabel.after { color: var(--amber); }
   .bars { fill: none; stroke-width: 3; stroke-linecap: round; }
   .bars.before { stroke: var(--before); }
   .bars.after { stroke: var(--amber); }
-  .curve-svg { margin: 12px 0 8px; }
-  .zone { fill: rgba(255, 154, 46, .12); }
-  .zone.soft { fill: rgba(255, 154, 46, .06); }
-  .curve { fill: none; stroke-width: 3.5; stroke-linejoin: round; stroke-linecap: round; }
-  .curve.before { stroke: var(--before); }
-  .curve.after { stroke: var(--amber); }
-  .tag { fill: var(--text); font: 700 13px var(--sans); }
-  .tag .sub { fill: var(--amber-soft); font-weight: 600; font-size: 12px; }
-  .points { display: grid; gap: 14px 36px; margin-top: 22px; }
-  .points.two { grid-template-columns: 1fr 1fr; }
-  .points.four { grid-template-columns: repeat(4, 1fr); gap: 14px 26px; }
-  .points p { color: var(--muted); font-size: 15.5px; }
 
   /* Your call: the controls beside their picture */
   .call { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 56px; align-items: center; }
-  .call dl { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 36px; margin: 18px 0 0; }
-  .call dt { font-weight: 600; font-size: 16.5px; margin: 0 0 3px; }
-  .call dd { margin: 0 0 16px; color: var(--muted); font-size: 15.5px; }
   .call figure { margin: 0 0 12px; }
   .call img { display: block; border-radius: 12px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .09), 0 20px 50px rgba(0, 0, 0, .5); }
 
   .aside { border-left: 2px solid var(--gold); padding: 4px 0 2px 24px; margin: 40px 0 0; max-width: 47em; color: var(--muted); font-size: 16px; }
   .aside strong { color: var(--text); font: italic 600 18.5px/1.4 var(--serif); }
 
-  /* A night at the milonga: a line down the evening */
-  .night { --when: 128px; --gap: 68px; list-style: none; margin: 56px 0 0; padding: 0; position: relative; }
-  .night::before {
-    content: ""; position: absolute; top: 8px; bottom: 0; left: calc(var(--when) + var(--gap) / 2); width: 1px;
-    background: linear-gradient(180deg, var(--line) 0, var(--line) 90%, transparent);
-  }
-  .stop { position: relative; display: grid; grid-template-columns: var(--when) minmax(0, 1fr); column-gap: var(--gap); padding-bottom: 60px; }
-  .stop:last-child { padding-bottom: 30px; }
-  .stop::before {
-    content: ""; position: absolute; top: 6px; left: calc(var(--when) + var(--gap) / 2 - 6px);
-    width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--gold);
-  }
-  .when { text-align: right; }
-  .when .time { display: block; color: var(--gold); font-size: 15px; font-weight: 600; letter-spacing: .05em; font-variant-numeric: tabular-nums; line-height: 1.5; }
-  .when .phase { display: block; color: var(--muted); font: italic 500 17.5px/1.3 var(--serif); }
   .what { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 26px 56px; align-items: start; }
   .what.wide { grid-template-columns: minmax(0, 1fr); }
   .what .text { max-width: 33em; }
@@ -184,22 +141,24 @@
   .pic .frame { border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255, 255, 255, .09), 0 20px 50px rgba(0, 0, 0, .5); }
   .pic .frame img { border-radius: 0; box-shadow: none; }
   .pic figcaption { color: var(--faint); font-size: 13.5px; margin-top: 12px; max-width: 46em; }
-  .template { display: flex; align-items: center; gap: 7px; margin: 26px 0 8px; }
-  .template span {
-    width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex: none;
-    border: 1.5px solid var(--gold); color: var(--text); font: 600 17px/1 var(--serif);
-  }
-  .template i { width: 3px; height: 17px; border-radius: 2px; background: var(--gold); opacity: .45; flex: none; }
-  .template-key { color: var(--faint) !important; font-size: 13.5px; }
 
   .also { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 44px; border-top: 1px solid var(--line); margin-top: 34px; padding-top: 30px; }
   .also p { color: var(--muted); font-size: 15.5px; }
 
-  /* Your library: four facts */
-  .facts4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 36px; }
-  .facts4 > div { border-top: 1px solid var(--line); padding-top: 22px; }
-  .facts4 h3 { font-size: 22px; }
-  .facts4 p { color: var(--muted); font-size: 15.5px; }
+  /* The player: one block per feature */
+  .feats { margin: 40px 0 0; }
+  .feat { border-top: 1px solid var(--line); padding: 32px 0 40px; }
+  .feat:first-child { border-top: 0; padding-top: 0; }
+  .panel.settings { margin-top: 34px; }
+
+  /* The library: the picture, then six facts */
+  .wide-pic { margin: 0 0 44px; }
+  .wide-pic .frame { width: fit-content; max-width: 100%; }
+  .facts3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px 36px; }
+  .facts3 > div { border-top: 1px solid var(--line); padding-top: 22px; }
+  .facts3 h3 { font-size: 22px; }
+  .facts3 p { color: var(--muted); font-size: 15.5px; }
+
 
   /* Questions */
   .faq { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 24px 72px; align-items: start; }
@@ -231,31 +190,6 @@
   .road h3 { font-size: 23px; }
   .road p { color: var(--muted); font-size: 16px; }
   .road-note { color: var(--faint); font-size: 14.5px; margin: 22px 0 0; }
-  .soon { display: grid; grid-template-columns: 1fr 260px; gap: 48px; align-items: center; margin-top: 44px; }
-  .soon .label { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin: 0 0 8px; }
-  .soon h3 { font-size: 28px; margin: 0 0 12px; }
-  .soon p, .soon li { color: var(--muted); font-size: 16px; }
-  .soon ul { margin: 12px 0 0; padding-left: 20px; }
-  .soon li { margin: 0 0 6px; }
-  .soon svg { width: 100%; height: auto; display: block; }
-  .soon .ph-frame { fill: #0b0a0c; stroke: var(--line); stroke-width: 2; }
-  .soon .ph-screen { fill: var(--surface); }
-  .soon .ph-text { fill: var(--text); font-family: var(--sans); }
-  .soon .ph-serif { fill: var(--text); font-family: var(--serif); }
-  .soon .ph-muted { fill: var(--muted); font-family: var(--sans); }
-  .soon .ph-gold { fill: var(--gold); font-family: var(--sans); font-weight: 700; letter-spacing: .12em; }
-  .soon .ph-amber { fill: var(--amber); font-family: var(--sans); font-weight: 600; }
-  .soon .ph-line { stroke: var(--line); stroke-width: 1; }
-  .soon .ph-track { fill: var(--line); }
-  .soon .ph-fill { fill: var(--amber); }
-  .soon .ph-btn { fill: none; stroke: var(--line); stroke-width: 1.5; }
-  .soon .ph-key { fill: var(--amber); }
-  .soon .ph-icon { fill: var(--text); }
-  .soon .ph-dark { fill: #121013; }
-  @media (max-width: 760px) {
-    .soon { grid-template-columns: 1fr; gap: 28px; }
-    .soon svg { max-width: 240px; margin: 0 auto; }
-  }
 
   /* Closing */
   .closing {
@@ -270,32 +204,19 @@
   footer.site .links { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 8px; }
 
   @media (max-width: 980px) {
-    .points.four { grid-template-columns: 1fr 1fr; }
-    .facts4 { grid-template-columns: 1fr 1fr; gap: 28px 36px; }
+    .facts3 { grid-template-columns: 1fr 1fr; }
     .faq { grid-template-columns: 1fr; }
     .faq-head { position: static; }
     .call { grid-template-columns: 1fr; }
     .call figure { justify-self: center; }
-    .night { --when: 104px; --gap: 52px; }
     .what { gap: 26px 36px; }
   }
   @media (max-width: 780px) {
     .top .pill { display: none; }
     .hero { padding: 56px 0 64px; }
     .shot { margin-top: 44px; }
-    .promises { grid-template-columns: 1fr; }
-    .promises > div, .promises > div:first-child, .promises > div:last-child { padding: 24px 0 8px; border-left: 0; border-top: 1px solid var(--line); }
-    .promises > div:first-child { border-top: 0; }
     .tanda-rule { margin: 76px 0 60px; }
     .panel { padding: 24px 20px 12px; border-radius: 16px; }
-    .points.two, .call dl { grid-template-columns: 1fr; }
-    .tag { font-size: 22px; }
-    .tag .sub { font-size: 20px; }
-    .night { margin-top: 40px; }
-    .night::before { left: 6px; }
-    .stop { display: block; padding: 0 0 60px 34px; }
-    .stop::before { left: 0; top: 5px; }
-    .when { text-align: left; display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
     .what, .what.wide { grid-template-columns: minmax(0, 1fr); }
     /* A wide picture keeps a readable size on a phone and is swiped sideways. */
     .pic.scroll .frame { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -314,13 +235,8 @@
     .top nav a { padding: 7px 8px; }
     .kicker::before, .kicker::after { width: 24px; }
     .btn { width: 100%; justify-content: center; }
-    .points.four, .facts4 { grid-template-columns: 1fr; }
-    .tag { font-size: 28px; }
-    .tag .sub { display: none; }
-    .curve { stroke-width: 6; }
+    .facts3 { grid-template-columns: 1fr; }
     .bars { stroke-width: 3.6; }
-    .template span { width: 34px; height: 34px; font-size: 15.5px; }
-    .template { gap: 5px; }
     summary { font-size: 16.5px; }
   }
 </style>
@@ -331,9 +247,9 @@
   <div class="wrap">
     <a class="brand" href="#"><img src="images/icon-tango.png" alt=""><span>Tanda &amp; Tone</span></a>
     <nav>
+      <a href="#player">The player</a>
       <a href="#sound">The sound</a>
-      <a href="#night">A night at the milonga</a>
-      <a href="#library">Your library</a>
+      <a href="#library">The library</a>
       <a href="#questions">Questions</a>
       <a href="support.html">Support</a>
     </nav>
@@ -345,130 +261,132 @@
   <div class="wrap">
     <p class="kicker">For tango DJs · Mac</p>
     <h1>Hear the orchestra,<br><em>not the transfer.</em></h1>
-    <p class="lede">Every tango in your library reached you through a different transfer: one quiet, one loud, one
-      worn. Tanda &amp; Tone is a player for the milonga that matches them in level and cleans up the worn ones. How
-      the night should sound is still yours to decide.</p>
+    <p class="lede">A player for the milonga: tandas and cortinas, pre-listen, a screen for the dancers, and your
+      library as you keep it. Every track plays at the right level, whatever transfer it came from.</p>
     <div class="buttons">
       <a class="btn primary" href="mailto:christianmb@gmail.com?subject=Tanda%20%26%20Tone%3A%20the%20beta">Tell me when the beta opens</a>
-      <a class="btn ghost" href="#sound">See what it does to the sound</a>
+      <a class="btn ghost" href="#player">See the player</a>
     </div>
     <ul class="meta">
       <li>In development, a public beta is coming</li>
       <li>Mac with Apple silicon</li>
       <li>Your own files, not streaming</li>
       <li>Works offline</li>
+      <li>Free for 14 days, then one purchase</li>
     </ul>
     <figure class="shot">
       <img src="images/player-tango.jpg" width="1100" height="626" alt="The Tanda & Tone window: the track in the room along the top, the library in the middle, Up Next in tandas on the right, the sound controls along the right edge and pre-listen along the bottom">
-      <figcaption>The whole evening in one window: the room along the top, your library in the middle, Up Next in
-        tandas, the sound on the right.</figcaption>
+      <figcaption>One window: the room along the top, your library in the middle, Up Next in tandas, the sound on
+        the right.</figcaption>
     </figure>
   </div>
 </div>
 
 <main class="wrap">
 
-<div class="promises">
-  <div><h2>One level.</h2><p>Every track is matched in level before it plays, whatever transfer it came from.</p></div>
-  <div><h2>All the drama.</h2><p>Inside a track the touch is light. A whisper carries over a full floor, a build
-    still builds, and the chan-chan lands.</p></div>
-  <div><h2>Your call.</h2><p>The volume through the night, the tone for this hall and how much of all this you
-    want are yours to set.</p></div>
-</div>
+<!-- The player -->
+<section id="player">
+  <p class="eyebrow">The player</p>
+  <h2>Made for a milonga</h2>
+
+  <div class="feats">
+    <div class="feat what">
+      <div class="text">
+        <h3>Tandas and cortinas</h3>
+        <p>Select four tracks and add them as a tanda, and a cortina follows it. Or lay out the night from a
+          template (tango, tango, vals, tango, tango, milonga) and drop the tracks into its slots.</p>
+        <p>Up Next shows every tanda with its orchestra and the time it ends.</p>
+      </div>
+      <figure class="pic">
+        <img src="images/tango-upnext.jpg" width="236" height="425" loading="lazy" alt="Up Next in tandas: tanda 2 with four tangos and the time it ends, a cortina, tanda 3 with three valses by Francisco Canaro, a cortina, and an empty slot of the template that says Tango tanda, drop 4 here">
+      </figure>
+    </div>
+
+    <div class="feat what wide">
+      <div class="text">
+        <h3>The room and your headphones</h3>
+        <p>The bar along the top shows what the room hears: orchestra, singer and year, the time left in large
+          digits, the tanda you are in and when it ends. Pre-listen plays any track on headphones while the room
+          plays on, at about the level the room will give it. The room is amber, the headphones blue.</p>
+      </div>
+      <figure class="pic scroll">
+        <div class="frame"><img src="images/tango-room.jpg" width="1100" height="133" loading="lazy" alt="The bar for the room: Nada by Carlos Di Sarli with Alberto Podestá, 1944, 2 minutes 44 left, tanda 1, track 2 of 4, and the buttons End after this track, End after this tanda, Fade out and Next now"></div>
+      </figure>
+    </div>
+
+    <div class="feat what">
+      <div class="text">
+        <h3>A cortina of a set length, the same pause</h3>
+        <p>A cortina plays for the time you set, 30 seconds to start with, and fades out. Between two tracks the
+          pause is the length you choose, whatever silence the files carry at their ends. Fade out ends a track or
+          a cortina early.</p>
+      </div>
+      <figure class="pic">
+        <img src="images/tango-cortina.jpg" width="320" height="189" loading="lazy" alt="The cortina settings: in order or at random, plays for 30 seconds, a fade of 3 seconds and a level of minus 3 dB">
+      </figure>
+    </div>
+
+    <div class="feat what">
+      <div class="text">
+        <h3>A screen for the dancers</h3>
+        <p>A second window for a projector or a TV: orchestra, title, singer and year in type that reads across
+          the room, and where the tanda is. Your name and the milonga's stand at the top. What it says about the
+          next tanda is up to you.</p>
+      </div>
+      <figure class="pic">
+        <img src="images/tango-dancers.jpg" width="480" height="270" loading="lazy" alt="The screen for the dancers, white type on black: Carlos Di Sarli, Corazón, Roberto Rufino, 1939, tango, the second of four, and next a vals by Francisco Canaro; the milonga's name and the DJ's at the top">
+      </figure>
+    </div>
+  </div>
+
+  <div class="also">
+    <div><h4>The lock</h4><p>Locked, Stop and Next need a short hold, so a stray click cuts nothing short.</p></div>
+    <div><h4>The end of the night</h4><p>End after this tanda lets it play out and holds the room quiet. Export
+      Tonight saves the set as a text list and a playlist.</p></div>
+    <div><h4>Slower for class</h4><p>Any track from 70 to 110&nbsp;% of its tempo, with the pitch kept.</p></div>
+  </div>
+</section>
 
 <div class="tanda-rule" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i></div>
 
 <!-- The sound -->
 <section id="sound">
   <p class="eyebrow">The sound</p>
-  <h2>The level is looked after.<br><em>The dynamics are the orchestra's.</em></h2>
+  <h2>Every track at the right level</h2>
   <p class="intro">A Canaro from 1935 and a Di Sarli from 1957 are not at the same level in anyone's library. That
-    difference is not the music's. It comes from how each transfer was made, and Tanda &amp; Tone takes it away
-    before the track plays.</p>
+    difference comes from the transfers, not from the music, and Tanda &amp; Tone takes it away before the track
+    plays.</p>
 
   <div class="panel">
-    <p class="label">Between the tracks</p>
-    <h3>Each track keeps its shape. Only its size changes.</h3>
-    <p class="illus">Four tracks of one tanda, from four transfers. An illustration of the idea, not a measurement.</p>
+    <p class="label">Between tracks</p>
+    <h3>Four tracks of one tanda, from four transfers</h3>
+    <p class="illus">An illustration of the idea, not a measurement.</p>
     <p class="rowlabel">As the files are</p>
     <svg viewBox="0 0 786 120" role="img" aria-label="Four tracks of a tanda as the files are: each at a different size"><path class="bars before" d="M20 53.5V66.5M25 55.0V65.0M30 54.1V65.9M35 55.3V64.7M40 53.5V66.5M45 51.0V69.0M50 49.5V70.5M55 51.6V68.4M60 48.4V71.6M65 51.0V69.0M70 49.5V70.5M75 48.2V71.8M80 43.7V76.3M85 47.3V72.7M90 45.1V74.9M95 48.2V71.8M100 43.7V76.3M105 47.3V72.7M110 45.1V74.9M115 55.8V64.2M120 54.2V65.8M125 55.5V64.5M130 54.7V65.3M135 55.8V64.2M140 45.5V74.5M145 48.7V71.3M150 46.7V73.3M155 49.5V70.5M160 45.5V74.5M165 48.7V71.3M170 46.7V73.3M180 43.7V76.3M185 47.3V72.7M212 29.3V90.7M217 36.1V83.9M222 32.0V88.0M227 37.7V82.3M232 29.3V90.7M237 36.1V83.9M242 32.0V88.0M247 37.7V82.3M252 29.3V90.7M257 33.2V86.8M262 28.5V91.5M267 35.0V85.0M272 25.5V94.5M277 33.2V86.8M282 28.5V91.5M292 29.3V90.7M297 36.1V83.9M302 32.0V88.0M307 37.7V82.3M312 29.3V90.7M317 36.1V83.9M322 32.0V88.0M327 37.7V82.3M332 25.5V94.5M337 33.2V86.8M342 28.5V91.5M347 35.0V85.0M352 25.5V94.5M357 33.2V86.8M362 28.5V91.5M367 35.0V85.0M372 25.5V94.5M377 33.2V86.8M404 54.2V65.8M409 55.5V64.5M414 54.7V65.3M419 55.8V64.2M424 54.2V65.8M429 55.5V64.5M434 54.7V65.3M439 55.3V64.7M444 52.8V67.2M449 53.8V66.2M454 51.9V68.1M459 52.9V67.1M464 49.0V71.0M469 50.5V69.5M474 47.6V72.4M479 49.1V70.9M484 43.2V76.8M489 45.5V74.5M494 41.1V78.9M499 43.3V76.7M504 36.9V83.1M509 42.1V77.9M514 39.0V81.0M519 43.3V76.7M524 36.9V83.1M529 42.1V77.9M534 39.0V81.0M549 42.1V77.9M554 39.0V81.0M559 43.3V76.7M569 42.1V77.9M596 31.0V89.0M601 37.5V82.5M606 33.5V86.5M611 39.0V81.0M616 31.0V89.0M621 37.5V82.5M626 18.0V102.0M631 26.7V93.3M636 14.0V106.0M641 24.3V95.7M646 18.0V102.0M651 26.7V93.3M656 14.0V106.0M661 24.3V95.7M666 41.3V78.7M671 45.1V74.9M676 39.5V80.5M681 44.1V75.9M686 41.3V78.7M691 45.1V74.9M696 23.5V96.5M701 31.6V88.4M706 26.7V93.3M711 33.5V86.5M716 23.5V96.5M721 31.6V88.4M726 18.0V102.0M731 26.7V93.3M736 14.0V106.0M741 24.3V95.7M746 18.0V102.0M751 26.7V93.3M761 24.3V95.7"/></svg>
     <p class="rowlabel after">As the room hears them</p>
     <svg viewBox="0 0 786 120" role="img" aria-label="The same four tracks as the room hears them: the same size, each with its own shape"><path class="bars after" d="M20 36.3V83.7M25 41.6V78.4M30 38.4V81.6M35 42.8V77.2M40 36.3V83.7M45 36.1V83.9M50 32.0V88.0M55 37.7V82.3M60 29.3V90.7M65 36.1V83.9M70 32.0V88.0M75 30.3V89.7M80 19.0V101.0M85 28.2V91.8M90 22.6V97.4M95 30.3V89.7M100 19.0V101.0M105 28.2V91.8M110 22.6V97.4M115 43.9V76.1M120 37.7V82.3M125 42.7V77.3M130 39.7V80.3M135 43.9V76.1M140 22.8V97.2M145 31.1V88.9M150 26.0V94.0M155 33.0V87.0M160 22.8V97.2M165 31.1V88.9M170 26.0V94.0M180 19.0V101.0M185 28.2V91.8M212 22.8V97.2M217 31.1V88.9M222 26.0V94.0M227 33.0V87.0M232 22.8V97.2M237 31.1V88.9M242 26.0V94.0M247 33.0V87.0M252 22.8V97.2M257 28.2V91.8M262 22.6V97.4M267 30.3V89.7M272 19.0V101.0M277 28.2V91.8M282 22.6V97.4M292 22.8V97.2M297 31.1V88.9M302 26.0V94.0M307 33.0V87.0M312 22.8V97.2M317 31.1V88.9M322 26.0V94.0M327 33.0V87.0M332 19.0V101.0M337 28.2V91.8M342 22.6V97.4M347 30.3V89.7M352 19.0V101.0M357 28.2V91.8M362 22.6V97.4M367 30.3V89.7M372 19.0V101.0M377 28.2V91.8M404 43.7V76.3M409 47.3V72.7M414 45.1V74.9M419 48.2V71.8M424 43.7V76.3M429 47.3V72.7M434 45.1V74.9M439 46.9V73.1M444 39.8V80.2M449 43.0V77.0M454 38.8V81.2M459 42.1V77.9M464 33.8V86.2M469 38.7V81.3M474 33.9V86.1M479 38.4V81.6M484 28.6V91.4M489 33.3V86.7M494 25.8V94.2M499 30.3V89.7M504 19.0V101.0M509 28.2V91.8M514 22.6V97.4M519 30.3V89.7M524 19.0V101.0M529 28.2V91.8M534 22.6V97.4M549 28.2V91.8M554 22.6V97.4M559 30.3V89.7M569 28.2V91.8M596 30.6V89.4M601 37.2V82.8M606 33.2V86.8M611 38.7V81.3M616 30.6V89.4M621 37.2V82.8M626 22.6V97.4M631 30.3V89.7M636 19.0V101.0M641 28.2V91.8M646 22.6V97.4M651 30.3V89.7M656 19.0V101.0M661 28.2V91.8M666 36.9V83.1M671 41.7V78.3M676 34.7V85.3M681 40.4V79.6M686 36.9V83.1M691 41.7V78.3M696 26.2V93.8M701 33.7V86.3M706 29.1V90.9M711 35.5V84.5M716 26.2V93.8M721 33.7V86.3M726 22.6V97.4M731 30.3V89.7M736 19.0V101.0M741 28.2V91.8M746 22.6V97.4M751 30.3V89.7M761 28.2V91.8"/></svg>
-    <div class="points two">
-      <div><h4>This is where the work is</h4><p>A quiet transfer from the thirties, a louder reissue, a modern
-        orchestra: in one evening the files can differ by 10&nbsp;dB from one track to the next.</p></div>
-      <div><h4>One level in the room</h4><p>Each track is set from the whole recording before it plays, so nothing
-        hunts for the level while the music runs.</p></div>
-    </div>
+    <p class="why">Each track is set from the whole recording before it plays, so nothing hunts for the level while
+      the music runs.</p>
   </div>
 
-  <div class="panel">
-    <div class="panel-head">
-      <div>
-        <p class="label">Inside a track</p>
-        <h3>A light touch, so the whole piece carries over a full floor</h3>
-      </div>
-      <div class="legend">
-        <span><i class="before"></i>As recorded</span>
-        <span><i class="after"></i>In the room</span>
-      </div>
-    </div>
-    <p class="why">Tango lives on contrast: a whispered violin, a long build, a held pause before the last two
-      chords. A full floor is not a quiet room, though. The softest passages sink under the talk and the shoes, and
-      the loudest are what make someone ask you to turn it down. A small, slow correction keeps the whole piece
-      inside what the room can carry.</p>
-    <p class="illus">An illustration of the idea, not a measurement of one recording.</p>
-    <svg class="curve-svg" viewBox="0 0 800 230" role="img" aria-label="The loudness of one track over time, as recorded and as the room hears it: the two lines have the same shape. The whispered opening comes up a little, the build still climbs, the pause stays silent and the last chords come at the full weight of the tutti">
-      <rect class="zone" x="14" y="18" width="136" height="196" rx="8"/>
-      <rect class="zone soft" x="150" y="18" width="210" height="196" rx="8"/>
-      <rect class="zone" x="672" y="18" width="44" height="196" rx="8"/>
-      <polyline class="curve before" points="0,206 14,172 150,172 360,46 470,51 486,130 560,130 576,46 668,46 676,206 712,206 720,46 752,51 772,206 800,206"/>
-      <polyline class="curve after" points="0,206 14,140 150,140 360,56 470,61 486,106 560,106 576,56 668,56 676,206 712,206 720,56 752,61 772,206 800,206"/>
-      <text class="tag" x="82" y="40" text-anchor="middle">Whisper<tspan class="sub" x="82" dy="1.6em">up a little</tspan></text>
-      <text class="tag" x="236" y="40" text-anchor="middle">Build<tspan class="sub" x="236" dy="1.6em">still builds</tspan></text>
-      <text class="tag" x="664" y="172" text-anchor="end">Pause<tspan class="sub" x="664" dy="1.6em">untouched</tspan></text>
-    </svg>
-    <div class="points four">
-      <div><h4>A whisper stays a whisper</h4><p>It comes up by a few dB, enough to be heard over a full floor. You
-        can set that lift lower, or switch it off.</p></div>
-      <div><h4>A build still builds</h4><p>A long crescendo keeps its climb, and the tutti still arrives as an
-        event.</p></div>
-      <div><h4>A pause stays silent</h4><p>Nothing is filled in, and nothing swells while the orchestra holds its
-        breath.</p></div>
-      <div><h4>The chan-chan lands</h4><p>After the pause, the last two chords come at the full weight of the
-        tutti.</p></div>
-    </div>
+  <div class="also">
+    <div><h4>Inside a track</h4><p>The touch is light. A soft passage comes up a few dB so it carries over a full
+      floor; a build still builds, a pause stays silent and the last chords land at full weight.</p></div>
+    <div><h4>Worn transfers</h4><p>Clicks, crackle and hiss are cleaned as much as each recording needs, and a
+      clean transfer is left alone. For the worst, the Restore Workshop makes new lossless copies ahead of the
+      night. Your originals never change.</p></div>
+    <div><h4>The PA</h4><p>A limiter catches the peaks that would hurt the speakers, and nothing else.</p></div>
   </div>
 
-  <div class="panel">
-    <p class="label">On a worn transfer</p>
-    <h3>Clicks, crackle and hiss, taken down with a light hand</h3>
-    <div class="points two">
-      <div><h4>While it plays</h4><p>Each recording gets only as much cleaning as it needs, and a clean transfer is
-        left alone. A worn track is never let go halfway: on a dance floor, crackle coming back is worse than a
-        little cleaning. Off is one click.</p></div>
-      <div><h4>Ahead of the night: the Restore Workshop</h4><p>For your worst transfers, drop in files or a whole
-        folder. Each is saved as a new lossless file, and the player plays the restored copy in place of the
-        original. Your originals never change.</p></div>
-    </div>
-  </div>
-
-  <div class="panel">
+  <div class="panel settings">
     <div class="call">
       <div>
-        <p class="label">Your call</p>
-        <h3>How it should sound is still your decision</h3>
-        <p class="why">Tanda &amp; Tone takes the repair work: the jumps between transfers, the wear. What the room
-          should sound like tonight is yours, and every control for it is one click away.</p>
-        <dl>
-          <div><dt>Leveling</dt><dd>How much the level is looked after. Soft is the lightest touch.</dd></div>
-          <div><dt>Quiet lift</dt><dd>How far a long, soft passage may come up. Zero switches that lift off.</dd></div>
-          <div><dt>Room, Bass, Mid, Treble</dt><dd>The tone for this hall, this PA and this orchestra.</dd></div>
-          <div><dt>Restore</dt><dd>Off, Auto or On. Auto decides for each track.</dd></div>
-          <div><dt>One track</dt><dd>A little higher or lower for a single track, remembered for its next play.
-            Limiter only leaves a track with its level match and nothing more.</dd></div>
-          <div><dt>Volume</dt><dd>Your mixer's fader, as on any other night.</dd></div>
-        </dl>
+        <p class="label">Your settings</p>
+        <h3>How it should sound is still your call</h3>
+        <p class="why">Leveling sets how much, and Soft is the lightest touch. Quiet lift sets how far a soft
+          passage may come up, down to nothing. Room, Bass, Mid and Treble fit the hall, Restore is Off, Auto or
+          On, and one track can go a little up or down, remembered for its next play. The volume is your
+          mixer's.</p>
       </div>
       <figure>
         <img src="images/tango-sound.jpg" width="264" height="324" loading="lazy" alt="The sound controls: Leveling at 5, Room at Neutral, Ambience off, Bass, Mid and Treble at 0, Restore on Auto and the Limiter only button">
@@ -477,167 +395,43 @@
   </div>
 
   <div class="aside">
-    <p><strong>If you know your compressors.</strong> Tango DJs who write about sound tend to describe the same
-      ideal: level the library first, then a soft, slow compressor that takes a few dB off the loudest passages and
-      is almost unnoticeable, with the bass kept out of what it listens to. That is how Tanda &amp; Tone is built.
-      Each track is levelled before it plays, so little is left for the compressor to do; the double bass and the
-      left hands do not make the music pump; and the limiter at the end only catches the peaks that would hurt the
-      PA.</p>
+    <p><strong>For those who know compressors.</strong> Tango DJs who write about sound tend to describe the same
+      ideal: level the library first, then a soft, slow compressor that takes a few dB off the loudest passages,
+      with the bass kept out of what it listens to. Tanda &amp; Tone is built that way.</p>
   </div>
 </section>
 
 <div class="tanda-rule" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i></div>
 
-<!-- A night at the milonga -->
-<section id="night">
-  <p class="eyebrow">A night at the milonga</p>
-  <h2>Made for the whole evening,<br><em>from the first tanda to La Cumparsita.</em></h2>
-  <p class="intro">What Tanda &amp; Tone does, in the order you meet it.</p>
-
-  <ol class="night">
-    <li class="stop">
-      <div class="when"><span class="time">17:00</span><span class="phase">At home</span></div>
-      <div class="what wide">
-        <div class="text">
-          <h3>It has heard every track before the floor does.</h3>
-          <p>Point it at your music folders. It reads orchestra, singer and rhythm from your tags, FLAC included,
-            and listens through every track once, so each one's level is known before you play it.</p>
-          <p>Search and filter by orchestra, singer, rhythm and year, or show only what you have not played for
-            a month, and a tanda is a few clicks. Not sure who sings on a track? Right-click it to look the title up on
-            tango.info or El Recodo in your browser.</p>
-          <p>Where you own the same recording from several albums, it marks the transfer that sounds best. Which
-            one plays is still your choice.</p>
-        </div>
-        <figure class="pic scroll">
-          <div class="frame"><img src="images/tango-library.jpg" width="980" height="353" loading="lazy" alt="The library with columns for title, orchestra, singer, rhythm, sound, time and year, and filters for orchestra, singer, rhythm and year above it"></div>
-          <figcaption>The Sound column shows how much the room will lift a track or turn it down, and an R where
-            Restore will clean it.</figcaption>
-        </figure>
-      </div>
-    </li>
-
-    <li class="stop">
-      <div class="when"><span class="time">19:30</span><span class="phase">Before the doors</span></div>
-      <div class="what">
-        <div class="text">
-          <h3>T T V T T M, laid out with its cortinas.</h3>
-          <p>Select four tracks and add them as a tanda, and a cortina follows it. Or lay out the whole night from
-            a template and drop the tracks into its slots.</p>
-          <p>A tanda you want again is saved with one click and waits in the sidebar for any evening.</p>
-          <p>Up Next shows every tanda with its orchestra and the time it ends. A small mark hints when a tanda
-            mixes orchestras, singers or rhythms. It is a hint, never a block.</p>
-          <div class="template" role="img" aria-label="A set template: tango, tango, vals, tango, tango, milonga, with a cortina after each tanda">
-            <span>T</span><i></i><span>T</span><i></i><span>V</span><i></i><span>T</span><i></i><span>T</span><i></i><span>M</span><i></i>
-          </div>
-          <p class="template-key">Tango, tango, vals, tango, tango, milonga, with a cortina after each.</p>
-        </div>
-        <figure class="pic">
-          <img src="images/tango-upnext.jpg" width="236" height="425" loading="lazy" alt="Up Next in tandas: tanda 2 with four tangos and the time it ends, a cortina, tanda 3 with three valses by Francisco Canaro, a cortina, and an empty slot of the template that says Tango tanda, drop 4 here">
-        </figure>
-      </div>
-    </li>
-
-    <li class="stop">
-      <div class="when"><span class="time">20:00</span><span class="phase">Doors open</span></div>
-      <div class="what wide">
-        <div class="text">
-          <h3>Set the mixer once.</h3>
-          <p>Every track comes out at the same level, so the gain you set on the first track holds for the night.
-            After that, a move on the fader is a choice, not a repair.</p>
-          <p>Then lock the player. Locked, Stop and Next need a short hold, so a stray click cuts nothing short.</p>
-        </div>
-      </div>
-    </li>
-
-    <li class="stop">
-      <div class="when"><span class="time">20:30</span><span class="phase">The first tanda</span></div>
-      <div class="what">
-        <div class="text">
-          <h3>The floor can read what is playing.</h3>
-          <p>Put a second window on the projector or a TV. It shows the orchestra, the title, the singer and the
-            year in type that reads across the room, and where the tanda is.</p>
-          <p>Your name and the milonga's stand at the top. What it says about the next tanda is yours to decide:
-            its rhythm, its orchestra too, or nothing at all.</p>
-        </div>
-        <figure class="pic">
-          <img src="images/tango-dancers.jpg" width="480" height="270" loading="lazy" alt="The screen for the dancers, white type on black: Carlos Di Sarli, Corazón, Roberto Rufino, 1939, tango, the second of four, and next a vals by Francisco Canaro; the milonga's name and the DJ's at the top">
-        </figure>
-      </div>
-    </li>
-
-    <li class="stop">
-      <div class="when"><span class="time">22:10</span><span class="phase">A full floor</span></div>
-      <div class="what wide">
-        <div class="text">
-          <h3>Amber is the room. Blue is only your headphones.</h3>
-          <p>The bar along the top shows what the room hears: orchestra, singer and year, the time left in large
-            digits, which tanda you are in and when it ends.</p>
-          <p>Pre-listen plays any track in your headphones while the room plays on, at about the level the room
-            will give it. Nothing blue ever reaches the room.</p>
-        </div>
-        <figure class="pic scroll">
-          <div class="frame"><img src="images/tango-room.jpg" width="1100" height="133" loading="lazy" alt="The bar for the room: Nada by Carlos Di Sarli with Alberto Podestá, 1944, 2 minutes 44 left, tanda 1, track 2 of 4, and the buttons End after this track, End after this tanda, Fade out and Next now"></div>
-        </figure>
-      </div>
-    </li>
-
-    <li class="stop">
-      <div class="when"><span class="time">22:22</span><span class="phase">The cortina</span></div>
-      <div class="what">
-        <div class="text">
-          <h3>The cortina knows its length.</h3>
-          <p>A cortina plays for the time you set, 30 seconds to start with, and fades out. Between two tracks the
-            pause is the length you choose, whatever silence the files carry at their ends.</p>
-          <p>And when the floor asks for it, Fade out ends a track or a cortina softly.</p>
-        </div>
-        <figure class="pic">
-          <img src="images/tango-cortina.jpg" width="320" height="189" loading="lazy" alt="The cortina settings: in order or at random, plays for 30 seconds, a fade of 3 seconds and a level of minus 3 dB">
-        </figure>
-      </div>
-    </li>
-
-    <li class="stop">
-      <div class="when"><span class="time">00:50</span><span class="phase">The last tanda</span></div>
-      <div class="what wide">
-        <div class="text">
-          <h3>Quiet for the announcement, and tonight's set to share.</h3>
-          <p>End after this tanda lets the tanda play out and then holds the room quiet, for an announcement or a
-            break.</p>
-          <p>When the last chord has sounded, Export Tonight saves the evening as a text list and a playlist file,
-            ready for the dancer who asks what that vals was.</p>
-        </div>
-      </div>
-    </li>
-  </ol>
-
-  <div class="also">
-    <div><h4>Slower for class</h4><p>Any track plays from 70 to 110&nbsp;% of its tempo with the pitch kept, to
-      teach a figure at an easier speed.</p></div>
-    <div><h4>The PA is guarded</h4><p>A limiter catches the peaks that would hurt the speakers, and nothing
-      else.</p></div>
-    <div><h4>It picks up where it was</h4><p>If the app stops, open it again and go on from the same track with
-      the same Up Next.</p></div>
-  </div>
-</section>
-
-<div class="tanda-rule" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i></div>
-
-<!-- Your library -->
+<!-- The library -->
 <section id="library">
-  <p class="eyebrow">Your library</p>
-  <h2>Your library <em>stays yours.</em></h2>
-  <p class="intro">You do not import anything into a new format, and you do not retag. Tanda &amp; Tone reads the
-    music where it already is.</p>
-  <div class="facts4">
-    <div><h3>Read where it is</h3><p>Tags are read from your files, FLAC included. Where they are not tango-shaped,
-      it takes what it can from the artist and the title. A catalogue of the golden-age orchestras in the app gives
-      a short name in full, and a singer or recording date your tags lack where it knows one for certain. You can
-      correct any track in the app.</p></div>
-    <div><h3>Never changed</h3><p>Nothing is written to your files. Corrections you make stay in the app, and
-      restored copies are new files.</p></div>
-    <div><h3>Not locked in</h3><p>Playlists go in and out in the common playlist format, so your work travels with
-      you. Correct a file's tags in your own tagger whenever you like: the track keeps its playlists, its tandas
-      and its history.</p></div>
+  <p class="eyebrow">The library</p>
+  <h2>Your library, read where it is</h2>
+  <p class="intro">Point Tanda &amp; Tone at your music folders. Nothing is imported into a new format and nothing
+    is retagged; it reads the files where they are and listens through each track once, so its level is known
+    before you play it.</p>
+
+  <figure class="pic scroll wide-pic">
+    <div class="frame"><img src="images/tango-library.jpg" width="980" height="353" loading="lazy" alt="The library with columns for title, orchestra, singer, rhythm, sound, time and year, and filters for orchestra, singer, rhythm and year above it"></div>
+    <figcaption>The Sound column shows how much the room will lift a track or turn it down, and an R where Restore
+      will clean it.</figcaption>
+  </figure>
+
+  <div class="facts3">
+    <div><h3>Orchestra, singer, rhythm, year</h3><p>Read from your tags, FLAC included. Where the tags are thin,
+      it takes what it can from the artist and the title, and a built-in catalogue of the golden-age orchestras
+      gives a short name in full, and a singer or a date where it knows one for certain. Point at a value to see
+      where it came from.</p></div>
+    <div><h3>A tanda in a few clicks</h3><p>Search and filter by orchestra, singer, rhythm and year, or show what
+      you have not played for a month. Not sure who sings? Right-click a track to look it up on tango.info or
+      El Recodo.</p></div>
+    <div><h3>The best transfer</h3><p>Where you own the same recording from several albums, the one that sounds
+      best is marked. Which one plays is your choice.</p></div>
+    <div><h3>Saved tandas and hints</h3><p>A tanda you want again is saved with one click and waits in the
+      sidebar. A small mark shows when a tanda mixes orchestras, singers or rhythms: a hint, never a block.</p></div>
+    <div><h3>Never changed, not locked in</h3><p>Corrections stay in the app, and nothing is written to your
+      files. Retag in your own tagger whenever you like: the track keeps its playlists, tandas and history.
+      Playlists go in and out as M3U.</p></div>
     <div><h3>Private</h3><p>It works offline, in a hall with no signal. Nothing is recorded or uploaded. No
       account, no analytics, no tracking.</p></div>
   </div>
@@ -649,14 +443,15 @@
 <section id="questions" class="faq">
   <div class="faq-head">
     <p class="eyebrow">Questions</p>
-    <h2>Good to know<br><em>before you try it.</em></h2>
+    <h2>Good to know</h2>
     <p class="intro">More in the <a href="support.html">support guide</a>.</p>
   </div>
   <div>
     <details>
       <summary>What do I need?</summary>
       <div><p>A Mac with Apple silicon and macOS 14.2 or later, your music as files, and a cable from the Mac's
-        headphone jack to the mixer.</p></div>
+        headphone jack to the mixer. For pre-listen, headphones on a device of their own: a USB headphone adapter
+        or Bluetooth headphones.</p></div>
     </details>
     <details>
       <summary>Does it play Spotify or other streaming services?</summary>
@@ -665,9 +460,8 @@
     <details>
       <summary>What happens to the dynamics?</summary>
       <div><p>They stay. The big correction is between tracks, where the difference comes from the transfers and
-        not from the music. Inside a track the touch is light: a soft passage comes up by a few dB, a build keeps
-        its climb, a pause is never filled and the last chords land at full weight. If you want less, turn Leveling
-        towards Soft.</p></div>
+        not from the music. Inside a track the touch is light. If you want less, turn Leveling towards Soft, or
+        set Quiet lift to zero.</p></div>
     </details>
     <details>
       <summary>How is this different from normalising my files?</summary>
@@ -677,25 +471,10 @@
         to your files.</p></div>
     </details>
     <details>
-      <summary>Can I have less of it, or none?</summary>
-      <div><p>Yes. Leveling sets how much, and Soft is the lightest touch. Quiet lift, under Engineer, sets how far
-        a soft passage may come up, down to nothing. Restore can be switched off. Limiter only gives one track just
-        its level and the limiter. Bass, Mid and Treble are yours, and so is your mixer.</p></div>
-    </details>
-    <details>
-      <summary>What do I need for pre-listen?</summary>
-      <div><p>Headphones on a device of their own: a USB headphone adapter or Bluetooth headphones. The Mac's own
-        jack goes to the room.</p></div>
-    </details>
-    <details>
       <summary>What if the Mac stops in the middle of a milonga?</summary>
       <div><p>The room goes quiet, because Tanda &amp; Tone is the player. Open it again and it offers to go on from the
         same track with the same Up Next. As with any setup, keep a reserve on its own mixer channel, such as a phone
         with a playlist.</p></div>
-    </details>
-    <details>
-      <summary>What will it cost?</summary>
-      <div><p>The price is not set yet. It will be free for 14 days and then one purchase, with no subscription.</p></div>
     </details>
   </div>
 </section>
@@ -705,18 +484,18 @@
 <!-- Where it stands -->
 <section id="roadmap">
   <p class="eyebrow">Where it stands</p>
-  <h2>Built with the DJs <em>who use it.</em></h2>
-  <p class="intro">What is happening now and what comes next, in the likely order. DJs' wishes can change it.</p>
+  <h2>Testing, a public beta, then the App Store</h2>
   <div class="road">
     <div class="now">
       <p class="step">Now</p>
-      <h3>The sound check with tango DJs</h3>
-      <p>Listening to real tandas on a PA with DJs, and setting the sound by what they hear.</p>
+      <h3>Testing with tango DJs</h3>
+      <p>DJs play it with their own libraries and listen to real tandas on a PA. The sound is set by what they
+        hear, and what they find goes into the app.</p>
     </div>
     <div>
       <p class="step">Next</p>
-      <h3>A public beta</h3>
-      <p>Open to tango DJs who want to try it at a real milonga.</p>
+      <h3>A public beta, 90 days</h3>
+      <p>Open to any tango DJ with a Mac, to try at a real milonga. Free for as long as the beta runs.</p>
     </div>
     <div>
       <p class="step">Then</p>
@@ -724,64 +503,13 @@
       <p>Free for 14 days, then one purchase. No subscription, no account.</p>
     </div>
   </div>
-  <div class="soon panel">
-    <div>
-      <p class="label">Coming next</p>
-      <h3>The night in your pocket</h3>
-      <p>Walk the floor and hear the room as the dancers hear it, with the set in your hand. Scan a code in the app
-        with your iPhone and Safari opens a remote for it: nothing to install, on the same Wi-Fi as the Mac.</p>
-      <ul>
-        <li>What is playing, the time left and the tanda clock.</li>
-        <li>Play, Pause and Next, with the same short hold as on the Mac when the lock is on.</li>
-        <li>The volume, and the level of the track that is playing.</li>
-      </ul>
-      <p>Only a phone you have paired with the app can reach it.</p>
-    </div>
-    <svg viewBox="0 0 300 600" role="img" aria-label="A sketch of the remote on an iPhone: Tanda 3, 2 of 4, ends 22:41; Carlos Di Sarli, Bahía Blanca, 1957; 1:52 left; Pause and a Next key to hold; volume and track level with minus and plus keys.">
-      <rect class="ph-frame" x="6" y="6" width="288" height="588" rx="46"/>
-      <rect class="ph-screen" x="18" y="18" width="264" height="564" rx="36"/>
-      <rect class="ph-dark" x="112" y="30" width="76" height="22" rx="11"/>
-      <text class="ph-gold" x="150" y="92" font-size="10" text-anchor="middle">TANDA 3 · 2 OF 4 · ENDS 22:41</text>
-      <line class="ph-line" x1="40" y1="108" x2="260" y2="108"/>
-      <text class="ph-muted" x="150" y="140" font-size="13" text-anchor="middle">Carlos Di Sarli · 1957</text>
-      <text class="ph-serif" x="150" y="172" font-size="26" text-anchor="middle">Bahía Blanca</text>
-      <text class="ph-amber" x="150" y="248" font-size="58" text-anchor="middle">1:52</text>
-      <text class="ph-muted" x="150" y="270" font-size="11" text-anchor="middle">left</text>
-      <rect class="ph-track" x="40" y="290" width="220" height="4" rx="2"/>
-      <rect class="ph-fill" x="40" y="290" width="138" height="4" rx="2"/>
-      <text class="ph-muted" x="150" y="322" font-size="11.5" text-anchor="middle">Next: cortina, then D'Arienzo</text>
-      <circle class="ph-key" cx="110" cy="382" r="32"/>
-      <rect class="ph-dark" x="99" y="368" width="8" height="28" rx="2"/>
-      <rect class="ph-dark" x="113" y="368" width="8" height="28" rx="2"/>
-      <circle class="ph-btn" cx="190" cy="382" r="32"/>
-      <path class="ph-icon" d="M178 370 L194 382 L178 394 Z"/>
-      <rect class="ph-icon" x="196" y="370" width="4" height="24" rx="1"/>
-      <text class="ph-muted" x="190" y="432" font-size="10" text-anchor="middle">hold for Next</text>
-      <line class="ph-line" x1="40" y1="452" x2="260" y2="452"/>
-      <text class="ph-text" x="40" y="486" font-size="13">Volume</text>
-      <circle class="ph-btn" cx="168" cy="482" r="14"/>
-      <rect class="ph-icon" x="162" y="481" width="12" height="2"/>
-      <circle class="ph-btn" cx="250" cy="482" r="14"/>
-      <rect class="ph-icon" x="244" y="481" width="12" height="2"/>
-      <rect class="ph-icon" x="249" y="476" width="2" height="12"/>
-      <text class="ph-text" x="209" y="486" font-size="12" text-anchor="middle">0 dB</text>
-      <text class="ph-text" x="40" y="530" font-size="13">This track</text>
-      <circle class="ph-btn" cx="168" cy="526" r="14"/>
-      <rect class="ph-icon" x="162" y="525" width="12" height="2"/>
-      <circle class="ph-btn" cx="250" cy="526" r="14"/>
-      <rect class="ph-icon" x="244" y="525" width="12" height="2"/>
-      <rect class="ph-icon" x="249" y="520" width="2" height="12"/>
-      <text class="ph-text" x="209" y="530" font-size="12" text-anchor="middle">+1 dB</text>
-      <rect class="ph-icon" x="110" y="562" width="80" height="4" rx="2" opacity=".5"/>
-    </svg>
-  </div>
   <p class="road-note">Updated November 2026. Missing something you need at a milonga?
     <a href="mailto:christianmb@gmail.com?subject=Tanda%20%26%20Tone%3A%20a%20wish">Tell me</a>.</p>
 </section>
 
 <div class="closing" id="contact">
   <h2>Want to hear it <em>at your milonga?</em></h2>
-  <p>Tanda &amp; Tone is made by Christian Melby Bjørn. Write with questions, or to try the beta when it opens.</p>
+  <p>Write with questions, or to try the beta when it opens.</p>
   <div class="buttons">
     <a class="btn primary" href="mailto:christianmb@gmail.com?subject=Tanda%20%26%20Tone%3A%20the%20beta">Tell me when the beta opens</a>
     <a class="btn ghost" href="support.html">Support and guide</a>
